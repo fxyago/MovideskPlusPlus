@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "name in manifest.json",
-  "description": "description in manifest.json",
+  "name": "Movidesk++",
+  "description": "Movidesk, improved™", 
   "options_ui": {
     "page": "src/pages/options/index.html"
   },
@@ -25,7 +25,9 @@
       "matches": [
         "http://*/*",
         "https://*/*",
-        "<all_urls>"
+        "<all_urls>",
+        "https://*.movidesk.com/*",
+        "https://suporte.cloudworks.com.br/*"
       ],
       "js": [
         "src/pages/content/index.tsx"
