@@ -108,13 +108,227 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
+
+  /* Custom Movidesk CSS */
+  #login-container,
+  #main-container,
+  #main-menu,
+  #tabs,
+  #tab-paneHome,
+  #button-more-icon-container,
+  .tab-ticket:not(.active),
+  .container-content-panel,
+  .container-text-editor,
+  .ticket-appointments,
+  .row.action-buttons,
+  .confirm,
+  .teste-dark,
+  .dropdown-menu-movidesk.open {
+    background-color: var(--color-muted) !important;
+    color: rgb(232, 232, 232) !important;
+  }
+
+  .dropdown-menu-movidesk.open::after {
+    background-color: var(--color-muted) !important;
+    color: rgb(232, 232, 232) !important;
+  }
+
+  .ticket-sidebar
+  .ticket-content
+  .ticket-header-container {
+    color: rgb(232, 232, 232) !important;
+  }
+
+  .container-content-panel :is(span, div):not(.line-wrapper) {
+    background-color: var(--color-muted) !important;
+    color: rgb(232, 232, 232) !important;
+  }
+
+  .tab-li,
+  .tab-ticket,
+  .button-more-tab-nav {
+    border-color: rgba(13, 139, 182, 0.8) !important;
+  }
+
+  .ticket-status-container {
+    background-color: rgba(13, 139, 182, 0.8) !important;
+  }
+
+  .md-confirm-action[data-value="no"] {
+    background-color: color-mix(
+      in srgb,
+      var(--color-muted),
+      #fff 15%
+    ) !important;
+    color: white !important;
+  }
+
+  .md-confirm-action[data-value="no"]:hover {
+    background-color: color-mix(
+      in srgb,
+      var(--color-muted),
+      #fff 30%
+    ) !important;
+    color: white !important;
+  }
+
+  .md-confirm-action[data-value="yes"] {
+    background-color: rgb(60, 180, 90) !important;
+    color: white !important;
+  }
+
+  .md-confirm-action[data-value="yes"]:hover {
+    background-color: rgb(80, 200, 110) !important;
+    color: white !important;
+  }
+
+  .ticket-type-label {
+    background-color: var(--color-muted) !important;
+    color: rgb(232, 232, 232) !important;
+  }
+
+  .select2-result-label,
+  .ticket-type-label:hover {
+    background-color: color-mix(
+      in srgb,
+      var(--color-muted),
+      #fff 20%
+    ) !important;
+    color: rgb(232, 232, 232) !important;
+  }
+
+  .ticket-type-label > .icon-mv-check2 {
+    padding-right: 0.4rem;
+  }
+
+  .tab-li.tab-ticket.tab-ticket-form,
+  .default-component-background-color {
+    background-color: color-mix(
+      in srgb,
+      var(--color-muted),
+      #fff 15%
+    ) !important;
+    color: rgb(210, 210, 210) !important;
+  }
+
+  .btn-options-toolbox {
+    padding-left: 1rem;
+  }
+
+  .form-control,
+  .select2-drop {
+    background-color: color-mix(
+      in srgb,
+      var(--color-muted),
+      #000 30%
+    ) !important;
+    color: rgb(232, 232, 232) !important;
+  }
+
+  .form-control::placeholder {
+    color: rgb(150, 150, 150) !important;
+  }
+
+  .slick-row {
+    border-top: 1px solid color-mix(in srgb, var(--color-muted), #fff 30%) !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-muted), #fff 30%) !important;
+    border-top-color: white !important;
+    border-bottom-color: white !important;
+  }
+
+  .slick-row .slick-cell {
+    background-color: var(--color-muted) !important;
+    color: rgb(232, 232, 232) !important;
+  }
+
+  .slick-row:hover .slick-cell {
+    background-color: color-mix(
+      in srgb,
+      var(--color-muted),
+      #fff 15%
+    ) !important;
+    color: rgb(232, 232, 232) !important;
+  }
+
+  #notifications-count {
+    border: none !important;
+    top: 6px !important;
+    left: 5px !important;
+  }
+
+  /* Scrollbar testes */
+  *::-webkit-scrollbar {
+    background-color: var(--muted);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: color-mix(
+      in srgb,
+      var(--color-muted),
+      #fff 15%
+    ) !important;
+  }
+
+  .select2-chosen,
+  .select2-results:not(.select2-highlighted) li {
+    color: rgb(232, 232, 232) !important;
+  }
+
+  .select2-container {
+    border-radius: 3px !important;
+  }
+
+  .inactive {
+    /* cinza mais escuro ???? */
+  }
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* .slick-row {
+    border-bottom-color: color-mix(
+      in srgb,
+      var(--color-muted),
+      #fff 15%
+    ) !important;
+
+    border-top-color: color-mix(
+      in srgb,
+      var(--color-muted),
+      #fff 15%
+    ) !important;
+  } */
+}
+
+@layer base {
+  img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+    display: revert;
+    vertical-align: revert;
+  }
+
+  img,
+  video {
+    max-width: revert;
+    height: revert;
+  }
+
+  ol,
+  ul,
+  menu {
+    list-style: revert;
   }
 }
