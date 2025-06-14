@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@source inline("{!,}{hover:,}bg-{zinc,stone,neutral,slate,gray}-{50,{100..900..100},950}");
+@source inline("{!,}{hover:,}text-{zinc,stone,neutral,slate,gray}-{50,{100..900..100},950}");
+@source inline("{!,}{hover:,}{text,bg}-muted{,-foreground}");
+@source inline("{!,}{hover:,}{text,bg}-white");
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -109,178 +114,436 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
 
-  /* Custom Movidesk CSS */
-  #login-container,
-  #main-container,
-  #main-menu,
-  #tabs,
-  #tab-paneHome,
-  #button-more-icon-container,
-  .tab-ticket:not(.active),
-  .container-content-panel,
+  /** Base and Text colors */
+  --dark-a0: #000000;
+  --dark-a10: #121212;
+  --dark-a20: #1e1e1e;
+  --dark-a30: #2a2a2a;
+  --dark-a40: #363636;
+  --dark-a50: #4e4e4e;
+
+  --light-a0: #ffffff;
+  --light-a10: #f2f2f2;
+  --light-a20: #e6e6e6;
+  --light-a30: #cccccc;
+  --light-a40: #b3b3b3;
+  --light-a50: #999999;
+
+  /** Theme primary colors */
+  --primary-a0: #1975d1;
+  --primary-a10: #4783d6;
+  --primary-a20: #6592dc;
+  --primary-a30: #7ea0e1;
+  --primary-a40: #95afe6;
+  --primary-a50: #abbfec;
+  --primary-a60: #c7d9f0;
+  --primary-a70: #e1eaf1;
+
+  /** Theme surface colors */
+  --surface-a0: #0f0f0f;
+  --surface-a10: #262626;
+  --surface-a20: #3d3d3d;
+  --surface-a30: #555555;
+  --surface-a40: #6f6f6f;
+  --surface-a50: #8a8a8a;
+
+  /** Theme tonal surface colors */
+  --surface-tonal-a0: #161920;
+  --surface-tonal-a10: #2b2e35;
+  --surface-tonal-a20: #42444b;
+  --surface-tonal-a30: #5a5c62;
+  --surface-tonal-a40: #73757a;
+  --surface-tonal-a50: #8e8f93;
+
+  /* Movidesk Geral */
+  * {
+    scrollbar-color: var(--surface-a50) var(--surface-a10) !important;
+  }
+
+  #main-container {
+    padding: 0px !important;
+  }
+
+  #ticket-sidebar {
+    background-color: var(--surface-a10);
+  }
+
+  .bar-tab-color-preview {
+    width: 100% !important;
+    left: 0px !important;
+  }
+
+  .tab-ticket-container {
+    background-color: var(--surface-a10);
+  }
+
+  .dropdown-toggle {
+    background-color: var(--surface-a20);
+
+    padding-left: 10px;
+    padding-right: 6px;
+
+    .button-text {
+      color: var(--light-a30);
+    }
+  }
+
+  .tab-ticket.tab-ticket-form {
+    border: none !important;
+  }
+
+  #tabs-nav li {
+    margin: 4px 4px 0 4px !important;
+  }
+
+  .ticket-content,
+  .ticket-subject {
+    color: var(--light-a30) !important;
+  }
+
+  .ticket-type-label,
   .container-text-editor,
-  .ticket-appointments,
-  .row.action-buttons,
-  .confirm,
-  .teste-dark,
-  .dropdown-menu-movidesk.open {
-    background-color: var(--color-muted) !important;
-    color: rgb(232, 232, 232) !important;
+  .tabs-wrapper,
+  .navbar {
+    background-color: var(--surface-a10) !important;
+    color: var(--light-a30) !important;
   }
 
-  .dropdown-menu-movidesk.open::after {
-    background-color: var(--color-muted) !important;
-    color: rgb(232, 232, 232) !important;
+  .fr-toolbar,
+  .fr-wrapper,
+  .fr-second-toolbar {
+    background-color: var(--surface-a10) !important;
+    color: var(--light-a30) !important;
+    border-color: var(--surface-a20) !important;
   }
 
-  .ticket-sidebar
-  .ticket-content
-  .ticket-header-container {
-    color: rgb(232, 232, 232) !important;
+  .container-text-editor > .fr-box {
+    border-color: var(--surface-a20);
   }
 
-  .container-content-panel :is(span, div):not(.line-wrapper) {
-    background-color: var(--color-muted) !important;
-    color: rgb(232, 232, 232) !important;
+  .ticket-description-container,
+  .line-division {
+    background-color: var(--surface-a20) !important;
   }
 
-  .tab-li,
-  .tab-ticket,
-  .button-more-tab-nav {
-    border-color: rgba(13, 139, 182, 0.8) !important;
+  .action-item-content-container,
+  .history-item-content,
+  #button-more-icon-container {
+    background-color: var(--surface-a20) !important;
+    color: var(--light-a30) !important;
+  }
+
+  .action-buttons-square {
+    background-color: var(--surface-a20) !important;
+
+    &:hover {
+      background-color: var(--surface-a30) !important;
+    }
+  }
+
+  .action-item-image-container,
+  .history-item-owner,
+  .tr-toolbar,
+  .form-toolbox {
+    border-color: var(--surface-a30) !important;
+  }
+
+  .jqx-input,
+  .jqx-action-button {
+    background-color: var(--surface-a20) !important;
+    border-color: var(--surface-a30) !important;
+  }
+
+  #ticket-action-type-select > label {
+    margin-bottom: 0px !important;
+    margin-top: 5px !important;
+  }
+
+  .jqx-action-button,
+  .jqx-input-content:disabled {
+    background-color: var(--surface-a20) !important;
+    color: var(--light-a40) !important;
+  }
+
+  .jqx-input-content:not(:disabled) {
+    background-color: var(--surface-a10) !important;
+    color: var(--light-a30) !important;
+  }
+
+  .dropdown-toggle {
+    background-color: var(--surface-a20) !important;
+    color: var(--light-a30) !important;
+  }
+
+  .icon-mv-clock,
+  .time-appointment-operations,
+  .appointments-header > div {
+    color: var(--light-a30) !important;
+  }
+
+  .ticket-breadcrumb > li {
+    a,
+    span {
+      color: var(--light-a30) !important;
+    }
+  }
+
+  #button-more-icon-container {
+    border-color: transparent !important;
+  }
+
+  /* Movidesk Geral */
+
+  /* Movidesk Select2 */
+  .select2-container,
+  .select2-container-disabled {
+    background-color: var(--surface-a20) !important;
+    border-color: var(--surface-a40) !important;
+
+    .select2-chosen {
+      color: var(--light-a10) !important;
+    }
+  }
+
+  .select2-container.ticket-select-status {
+    background-color: var(--surface-a30) !important;
+    border-color: var(--surface-a50) !important;
+
+    .select2-chosen {
+      color: var(--light-a10) !important;
+    }
+  }
+
+  .select2-container.select2-container-multi {
+    background-color: var(--surface-a20) !important;
+    border-color: var(--surface-a50) !important;
+
+    .select2-choices {
+      background-color: var(--surface-a20) !important;
+      color: var(--light-a10) !important;
+    }
   }
 
   .ticket-status-container {
-    background-color: rgba(13, 139, 182, 0.8) !important;
+    background-color: var(--surface-a10) !important;
   }
 
-  .md-confirm-action[data-value="no"] {
-    background-color: color-mix(
-      in srgb,
-      var(--color-muted),
-      #fff 15%
-    ) !important;
-    color: white !important;
-  }
-
-  .md-confirm-action[data-value="no"]:hover {
-    background-color: color-mix(
-      in srgb,
-      var(--color-muted),
-      #fff 30%
-    ) !important;
-    color: white !important;
-  }
-
-  .md-confirm-action[data-value="yes"] {
-    background-color: rgb(60, 180, 90) !important;
-    color: white !important;
-  }
-
-  .md-confirm-action[data-value="yes"]:hover {
-    background-color: rgb(80, 200, 110) !important;
-    color: white !important;
-  }
-
-  .ticket-type-label {
-    background-color: var(--color-muted) !important;
-    color: rgb(232, 232, 232) !important;
-  }
-
-  .select2-result-label,
-  .ticket-type-label:hover {
-    background-color: color-mix(
-      in srgb,
-      var(--color-muted),
-      #fff 20%
-    ) !important;
-    color: rgb(232, 232, 232) !important;
-  }
-
-  .ticket-type-label > .icon-mv-check2 {
-    padding-right: 0.4rem;
-  }
-
-  .tab-li.tab-ticket.tab-ticket-form,
-  .default-component-background-color {
-    background-color: color-mix(
-      in srgb,
-      var(--color-muted),
-      #fff 15%
-    ) !important;
-    color: rgb(210, 210, 210) !important;
-  }
-
-  .btn-options-toolbox {
-    padding-left: 1rem;
-  }
-
-  .form-control,
   .select2-drop {
-    background-color: color-mix(
-      in srgb,
-      var(--color-muted),
-      #000 30%
-    ) !important;
-    color: rgb(232, 232, 232) !important;
+    background-color: var(--surface-a20) !important;
+
+    input {
+      background-color: var(--surface-a10) !important;
+    }
   }
 
-  .form-control::placeholder {
-    color: rgb(150, 150, 150) !important;
+  .select2-search {
+    height: auto !important;
+    padding-top: 3px !important;
+    border-color: var(--surface-a20) !important;
   }
 
-  .slick-row {
-    border-top: 1px solid color-mix(in srgb, var(--color-muted), #fff 30%) !important;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-muted), #fff 30%) !important;
-    border-top-color: white !important;
-    border-bottom-color: white !important;
+  .select2-input {
+    color: var(--light-a10) !important;
   }
 
-  .slick-row .slick-cell {
-    background-color: var(--color-muted) !important;
-    color: rgb(232, 232, 232) !important;
+  .md-select-justificationx,
+  .md-select-item-idented {
+    color: var(--light-a30) !important;
   }
 
-  .slick-row:hover .slick-cell {
-    background-color: color-mix(
-      in srgb,
-      var(--color-muted),
-      #fff 15%
-    ) !important;
-    color: rgb(232, 232, 232) !important;
+  .select2-results {
+    background-color: var(--surface-a10) !important;
   }
 
-  #notifications-count {
-    border: none !important;
-    top: 6px !important;
-    left: 5px !important;
+  .select2-result-unselectable {
+    background-color: var(--surface-a20) !important;
+
+    .select2-result-label,
+    .select2-result-label > span {
+      background-color: var(--surface-a20) !important;
+      color: var(--light-a30) !important;
+    }
   }
 
-  /* Scrollbar testes */
-  *::-webkit-scrollbar {
-    background-color: var(--muted);
+  .select2-result-selectable {
+    background-color: var(--surface-a10) !important;
+
+    .select2-result-label,
+    .select2-result-label > span {
+      background-color: var(--surface-a10) !important;
+      color: var(--light-a50) !important;
+    }
   }
 
-  *::-webkit-scrollbar-thumb {
-    background-color: color-mix(
-      in srgb,
-      var(--color-muted),
-      #fff 15%
-    ) !important;
+  .select2-result-selectable.select2-highlighted {
+    background-color: var(--surface-a30) !important;
+
+    .select2-result-label,
+    .select2-result-label > span {
+      background-color: var(--surface-a30) !important;
+      color: var(--light-a30) !important;
+    }
+  }
+  /* Movidesk Select2 */
+
+  /* Movidesk SlickGrid */
+  .ui-widget-content.slick-row {
+    @apply bg-none;
   }
 
-  .select2-chosen,
-  .select2-results:not(.select2-highlighted) li {
-    color: rgb(232, 232, 232) !important;
+  .slick-cell {
+    @apply border-x-0 border-y border-y-zinc-600;
   }
 
-  .select2-container {
-    border-radius: 3px !important;
+  .slick-header {
+    @apply bg-neutral-800;
   }
 
-  .inactive {
-    /* cinza mais escuro ???? */
+  .slick-cell {
+    @apply border-x-0;
   }
+
+  .slick-column-name {
+    @apply text-zinc-200;
+  }
+
+  .slick-sort-indicator {
+    @apply bg-zinc-700 text-zinc-200;
+  }
+  /* Movidesk SlickGrid */
+
+  /** Base Style
+  background-color: var(--surface-a20) !important;
+  color: var(--light-a10) !important;
+  */
+
+  /* Movidesk Dropdown */
+  .dropdown-menu {
+    background-color: var(--surface-a20) !important;
+    color: var(--light-a10) !important;
+
+    li {
+      background-color: var(--surface-a20) !important;
+
+      span,
+      a {
+        color: var(--light-a10) !important;
+
+        &:hover {
+          color: inherit !important;
+          background-color: inherit !important;
+        }
+      }
+
+      &:hover {
+        background-color: var(--surface-a30) !important;
+        color: var(--light-a20) !important;
+      }
+    }
+  }
+
+  .divider {
+    background-color: var(--surface-a30) !important;
+  }
+
+  .dropdown-menu-movidesk {
+    background-color: var(--surface-a10) !important;
+    color: var(--light-a30) !important;
+    border-color: var(--surface-a20) !important;
+
+    > li > a {
+      color: var(--light-a30) !important;
+    }
+  }
+
+  .dropdown-dad-movidesk::before {
+    border-bottom-color: var(--surface-a20) !important;
+    transform: translateX(48%) !important;
+    border-width: 12px !important;
+    left: -3px !important;
+  }
+
+  .dropdown-dad-movidesk::after {
+    border-bottom-color: var(--surface-a10) !important;
+    transform: translateX(48%) !important;
+    border-width: 10px !important;
+    left: -2px !important;
+  }
+
+  .dropdown-item-link-movidesk:hover {
+    background-color: var(--surface-a20) !important;
+  }
+
+  /* Movidesk Dropdown */
+
+  /* Movidesk Inputs */
+
+  .input-mv-new {
+    background-color: var(--surface-a20) !important;
+    border-color: var(--surface-a40) !important;
+    color: var(--light-a30) !important;
+  }
+
+  .input-mv-new:hover {
+    border-color: var(--surface-a50) !important;
+  }
+
+  .lbl-input-text,
+  .info-item-container-custom-field {
+    color: var(--light-a30);
+  }
+
+  /* Movidesk Inputs */
+
+  /* Movidesk mv-input */
+
+  .mv-input-container {
+    > div:first-of-type,
+    span:first-of-type {
+      button,
+      a {
+        color: var(--light-a10) !important;
+      }
+
+      > span:first-of-type {
+        background-color: var(--surface-a20) !important;
+        border-color: var(--surface-a40) !important;
+        color: var(--light-a10) !important;
+      }
+
+      > span:first-of-type:hover {
+        border-color: var(--surface-a50) !important;
+      }
+    }
+  }
+
+  /* Movidesk mv-input */
+
+  /* Movidesk Misc. */
+  .all-macros {
+    padding-left: 11px;
+    padding-right: 7px;
+  }
+
+  #select2-chosen-10,
+  .appointment-activity > .select2-choice > .select2-chosen {
+    padding: 8px !important;
+  }
+
+  .ticket-type-label.active > .icon-mv-check2 {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .button-more-tab-nav {
+    border-left: none !important;
+    margin-top: 4px !important;
+
+    .icon-mv-add {
+      translate: 0px 2px !important;
+    }
+  }
+  /* Movidesk Misc. */
 }
 
 @layer base {
@@ -291,20 +554,6 @@
   body {
     @apply bg-background text-foreground;
   }
-
-  /* .slick-row {
-    border-bottom-color: color-mix(
-      in srgb,
-      var(--color-muted),
-      #fff 15%
-    ) !important;
-
-    border-top-color: color-mix(
-      in srgb,
-      var(--color-muted),
-      #fff 15%
-    ) !important;
-  } */
 }
 
 @layer base {
