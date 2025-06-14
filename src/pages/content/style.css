@@ -173,7 +173,8 @@
     left: 0px !important;
   }
 
-  .tab-ticket-container {
+  .tab-ticket-container,
+  .tab-pane.active {
     background-color: var(--surface-a10);
   }
 
@@ -188,12 +189,22 @@
     }
   }
 
+  .action-item-menu {
+    color: var(--light-a30) !important;
+  }
+
   .tab-ticket.tab-ticket-form {
     border: none !important;
   }
 
+  .tab-li.tab-ticket:not(.active) {
+    background-color: var(--surface-a20) !important;
+    color: var(--light-a30) !important;
+  }
+
   #tabs-nav li {
     margin: 4px 4px 0 4px !important;
+    border-left: 0px !important;
   }
 
   .ticket-content,
@@ -210,11 +221,21 @@
   }
 
   .fr-toolbar,
-  .fr-wrapper,
+  .fr-wrapper {
+    background-color: var(--surface-a10) !important;
+    color: var(--light-a30) !important;
+    border-color: var(--surface-a20) !important;
+
+    .fr-element.fr-view {
+      color: var(--light-a30) !important;
+    }
+  }
+
   .fr-second-toolbar {
     background-color: var(--surface-a10) !important;
     color: var(--light-a30) !important;
     border-color: var(--surface-a20) !important;
+    border-radius: 0px !important;
   }
 
   .container-text-editor > .fr-box {
@@ -222,6 +243,7 @@
   }
 
   .ticket-description-container,
+  .fr-newline,
   .line-division {
     background-color: var(--surface-a20) !important;
   }
@@ -235,6 +257,7 @@
 
   .action-buttons-square {
     background-color: var(--surface-a20) !important;
+    color: var(--light-a30) !important;
 
     &:hover {
       background-color: var(--surface-a30) !important;
@@ -301,6 +324,7 @@
     border-color: var(--surface-a40) !important;
 
     .select2-chosen {
+      background-color: var(--surface-a20) !important;
       color: var(--light-a10) !important;
     }
   }
@@ -310,6 +334,7 @@
     border-color: var(--surface-a50) !important;
 
     .select2-chosen {
+      background-color: var(--surface-a30) !important;
       color: var(--light-a10) !important;
     }
   }
@@ -446,28 +471,49 @@
     background-color: var(--surface-a30) !important;
   }
 
-  .dropdown-menu-movidesk {
+  #goto-ticket {
+    color: var(--light-a30) !important;
+  }
+
+  .dropdown-menu-movidesk,
+  .list-search-result-container {
     background-color: var(--surface-a10) !important;
     color: var(--light-a30) !important;
     border-color: var(--surface-a20) !important;
 
-    > li > a {
+    & > li > a {
       color: var(--light-a30) !important;
     }
   }
 
-  .dropdown-dad-movidesk::before {
+  .dropdown-dad-movidesk::before,
+  .top-user-item-search::before {
     border-bottom-color: var(--surface-a20) !important;
     transform: translateX(48%) !important;
     border-width: 12px !important;
     left: -3px !important;
   }
 
-  .dropdown-dad-movidesk::after {
+  .dropdown-dad-movidesk::after,
+  .top-user-item-search::after {
     border-bottom-color: var(--surface-a10) !important;
     transform: translateX(48%) !important;
     border-width: 10px !important;
-    left: -2px !important;
+    left: 1px !important;
+  }
+
+  .button-more-tab-nav.dropdown-dad-movidesk::before {
+    border-bottom-color: var(--surface-a20) !important;
+    transform: translateX(48%) !important;
+    border-width: 12px !important;
+    left: 1px !important;
+  }
+
+  .button-more-tab-nav.dropdown-dad-movidesk::after {
+    border-bottom-color: var(--surface-a10) !important;
+    transform: translateX(48%) !important;
+    border-width: 10px !important;
+    left: 5px !important;
   }
 
   .dropdown-item-link-movidesk:hover {
@@ -478,7 +524,8 @@
 
   /* Movidesk Inputs */
 
-  .input-mv-new {
+  .input-mv-new,
+  .md-select-treeview-dropdown-field {
     background-color: var(--surface-a20) !important;
     border-color: var(--surface-a40) !important;
     color: var(--light-a30) !important;
@@ -493,16 +540,32 @@
     color: var(--light-a30);
   }
 
+  .md-select-item {
+    background-color: var(--surface-a20) !important;
+
+    .md-select-item-name {
+      color: var(--light-a10) !important;
+
+      & > * {
+        color: var(--light-a10) !important;
+      }
+    }
+  }
+
+  .action-item-menu {
+    background-color: var(--surface-a20) !important;
+    border-color: var(--surface-a30) !important;
+  }
   /* Movidesk Inputs */
 
   /* Movidesk mv-input */
-
   .mv-input-container {
     > div:first-of-type,
     span:first-of-type {
       button,
       a {
         color: var(--light-a10) !important;
+        background-color: inherit !important;
       }
 
       > span:first-of-type {
