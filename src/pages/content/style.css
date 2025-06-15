@@ -156,12 +156,27 @@
   --surface-tonal-a50: #8e8f93;
 
   /* Movidesk Geral */
+
+  body {
+    background-color: var(--surface-a10) !important;
+  }
+
   * {
     scrollbar-color: var(--surface-a50) var(--surface-a10) !important;
   }
 
+  form > button {
+    background-color: var(--surface-a20) !important;
+    color: var(--light-a30) !important;
+
+    &:hover {
+      background-color: var(--surface-a30) !important;
+    }
+  }
+
   #main-container {
     padding: 0px !important;
+    background-color: var(--surface-a10);
   }
 
   #ticket-sidebar {
@@ -178,37 +193,161 @@
     background-color: var(--surface-a10);
   }
 
-  .dropdown-toggle {
-    background-color: var(--surface-a20);
+  .action-item-menu {
+    div,
+    a {
+      background-color: var(--surface-a20) !important;
+
+      span {
+        color: var(--light-a30) !important;
+      }
+    }
+
+    &:hover {
+      background-color: var(--surface-a30) !important;
+    }
+  }
+
+  .btn-options-toolbox {
+    background-color: var(--surface-a20) !important;
+
+    span {
+      color: var(--light-a30) !important;
+    }
+  }
+
+  .tr-data.parent:hover {
+    background-color: var(--surface-a30) !important;
+  }
+
+  .pull-right {
+    background-color: var(--surface-a10) !important;
+    color: var(--light-a30) !important;
 
     padding-left: 10px;
     padding-right: 6px;
-
-    .button-text {
-      color: var(--light-a30);
-    }
   }
 
   .action-item-menu {
     color: var(--light-a30) !important;
   }
 
-  .tab-ticket.tab-ticket-form {
-    border: none !important;
+  #tabs-nav li:hover .close {
+    color: var(--light-a30);
   }
 
-  .tab-li.tab-ticket:not(.active) {
-    background-color: var(--surface-a20) !important;
+  .view-ticket {
+    a {
+      color: var(--light-a30) !important;
+    }
+
+    &:hover {
+      background-color: var(--surface-a30) !important;
+    }
+  }
+
+  .change-visualizations {
+    color: var(--light-a30) !important;
+
+    &:hover {
+      background-color: var(--surface-a30) !important;
+    }
+  }
+
+  em {
+    background-color: var(--surface-a30) !important;
+  }
+
+  .title-panel {
     color: var(--light-a30) !important;
   }
 
+  .personal-view-title {
+    color: var(--light-a20) !important;
+  }
+
+  .personal-visualizations-container > ul > li {
+    background-color: var(--surface-a10) !important;
+
+    a {
+      color: var(--light-a30) !important;
+      background-color: var(--surface-a10) !important;
+    }
+
+    &:hover {
+      background-color: var(--surface-a10) !important;
+    }
+  }
+
+  .toggle-sidebar {
+    background-color: var(--surface-a20) !important;
+    color: var(--light-a30) !important;
+
+    &:hover {
+      background-color: var(--surface-a30) !important;
+    }
+  }
+
+  .tab-li:not(.active) {
+    background-color: var(--surface-a20) !important;
+    color: var(--light-a50) !important;
+
+    a,
+    .tab-icon {
+      color: var(--light-a50) !important;
+    }
+  }
+
+  .line-top {
+    border-top-width: 0px !important;
+  }
+
+  .nav-stacked.message-preview-type {
+    background-color: var(--surface-a10) !important;
+  }
+
+  .modal-content {
+    background-color: var(--surface-a10) !important;
+
+    .modal-title {
+      color: var(--light-a30) !important;
+    }
+  }
+
+  .message-menu {
+    background-color: var(--surface-a10) !important;
+
+    .folder-container:hover {
+      color: var(--light-a30) !important;
+      background-color: var(--surface-a30) !important;
+    }
+
+    .nav-stacked > li {
+      a {
+        color: var(--light-a30) !important;
+      }
+
+      &.active {
+        background-color: var(--surface-a20) !important;
+      }
+
+      &:hover {
+        background-color: var(--surface-a30) !important;
+      }
+    }
+  }
+
   #tabs-nav li {
-    margin: 4px 4px 0 4px !important;
+    /* Desativado temporariamente
+    margin: 4px 4px 0 4px !important; */
+
+    margin: 2px 2px 0 2px !important;
     border-left: 0px !important;
   }
 
   .ticket-content,
-  .ticket-subject {
+  .ticket-subject,
+  .label-radio-group {
     color: var(--light-a30) !important;
   }
 
@@ -250,11 +389,13 @@
 
   .action-item-content-container,
   .history-item-content,
+  .info-alert-container,
   #button-more-icon-container {
     background-color: var(--surface-a20) !important;
     color: var(--light-a30) !important;
   }
 
+  .btn-import,
   .action-buttons-square {
     background-color: var(--surface-a20) !important;
     color: var(--light-a30) !important;
@@ -269,6 +410,16 @@
   .tr-toolbar,
   .form-toolbox {
     border-color: var(--surface-a30) !important;
+  }
+
+  .jqx-popup.jqx-fill-state-focus {
+    background-color: var(--surface-a20) !important;
+    border-color: var(--surface-a30) !important;
+  }
+
+  .jqx-widget {
+    background-color: var(--surface-a20) !important;
+    color: var(--light-a30) !important;
   }
 
   .jqx-input,
@@ -293,13 +444,16 @@
     color: var(--light-a30) !important;
   }
 
-  .dropdown-toggle {
+  .ui-datepicker {
     background-color: var(--surface-a20) !important;
-    color: var(--light-a30) !important;
+
+    .ui-datepicker-header {
+      background-color: var(--surface-a20) !important;
+    }
   }
 
   .icon-mv-clock,
-  .time-appointment-operations,
+  .time-appointment-operations > a,
   .appointments-header > div {
     color: var(--light-a30) !important;
   }
@@ -315,13 +469,51 @@
     border-color: transparent !important;
   }
 
+  .loading-indicator,
+  .container-loading {
+    background-color: var(--surface-a30);
+    border-color: var(--surface-a30);
+    color: var(--light-a30);
+  }
+
   /* Movidesk Geral */
+
+  /* Movidesk Popover */
+  .popover {
+    background-color: var(--surface-a30) !important;
+    border-color: var(--surface-a40) !important;
+
+    .popover-content {
+      color: var(--light-a30) !important;
+    }
+
+    .arrow {
+      border-color: var(--surface-a40) !important;
+    }
+
+    &.bottom {
+      .arrow::after {
+        border-top-color: var(--surface-a30) !important;
+      }
+    }
+
+    &.top {
+      .arrow::after {
+        border-bottom-color: var(--surface-a30) !important;
+      }
+    }
+  }
+  /* Movidesk Popover */
 
   /* Movidesk Select2 */
   .select2-container,
   .select2-container-disabled {
     background-color: var(--surface-a20) !important;
     border-color: var(--surface-a40) !important;
+
+    .select2-choice {
+      background-color: var(--surface-a20) !important;
+    }
 
     .select2-chosen {
       background-color: var(--surface-a20) !important;
@@ -332,6 +524,10 @@
   .select2-container.ticket-select-status {
     background-color: var(--surface-a30) !important;
     border-color: var(--surface-a50) !important;
+
+    .select2-choice {
+      background-color: var(--surface-a30) !important;
+    }
 
     .select2-chosen {
       background-color: var(--surface-a30) !important;
@@ -413,27 +609,38 @@
 
   /* Movidesk SlickGrid */
   .ui-widget-content.slick-row {
-    @apply bg-none;
+    background-image: none !important;
+  }
+
+  .slick-row:hover {
+    .slick-cell {
+      background-color: var(--surface-a30) !important;
+    }
   }
 
   .slick-cell {
-    @apply border-x-0 border-y border-y-zinc-600;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    border-top-color: var(--surface-a30) !important;
+    background-color: var(--surface-a20) !important;
+    color: var(--light-a30) !important;
+
+    .inactive {
+      color: var(--light-a50) !important;
+    }
   }
 
   .slick-header {
-    @apply bg-neutral-800;
-  }
-
-  .slick-cell {
-    @apply border-x-0;
+    background-color: var(--surface-a10) !important;
   }
 
   .slick-column-name {
-    @apply text-zinc-200;
+    color: var(--light-a10) !important;
   }
 
   .slick-sort-indicator {
-    @apply bg-zinc-700 text-zinc-200;
+    background-color: var(--surface-a20) !important;
+    color: var(--light-a20) !important;
   }
   /* Movidesk SlickGrid */
 
@@ -454,13 +661,22 @@
       a {
         color: var(--light-a10) !important;
 
+        span,
+        div {
+          color: var(--light-a10) !important;
+        }
+
         &:hover {
           color: inherit !important;
           background-color: inherit !important;
         }
       }
 
-      &:hover {
+      &.dropdown-header {
+        color: var(--light-a30) !important;
+      }
+
+      &:not(.dropdown-header):hover {
         background-color: var(--surface-a30) !important;
         color: var(--light-a20) !important;
       }
@@ -481,28 +697,49 @@
     color: var(--light-a30) !important;
     border-color: var(--surface-a20) !important;
 
-    & > li > a {
+    & > a {
+      color: var(--light-a30) !important;
+
+      &:hover {
+        background-color: var(--surface-a20) !important;
+      }
+    }
+
+    &.dropdown-header,
+    .dropdown-header {
       color: var(--light-a30) !important;
     }
   }
 
-  .dropdown-dad-movidesk::before,
-  .top-user-item-search::before {
+  .dropdown-dad-movidesk::before {
     border-bottom-color: var(--surface-a20) !important;
     transform: translateX(48%) !important;
     border-width: 12px !important;
     left: -3px !important;
   }
 
-  .dropdown-dad-movidesk::after,
-  .top-user-item-search::after {
+  .dropdown-dad-movidesk::after {
     border-bottom-color: var(--surface-a10) !important;
     transform: translateX(48%) !important;
     border-width: 10px !important;
     left: 1px !important;
   }
 
-  .button-more-tab-nav.dropdown-dad-movidesk::before {
+  .top-user-item-search::before {
+    border-bottom-color: var(--surface-a20) !important;
+    border-width: 12px !important;
+    bottom: 1px !important;
+    transform: translateX(-25%) !important;
+  }
+
+  .top-user-item-search::after {
+    border-bottom-color: var(--surface-a10) !important;
+    border-width: 12px !important;
+    transform: translateX(-25%) !important;
+  }
+
+  /* Desativado temporariamente
+   .button-more-tab-nav.dropdown-dad-movidesk::before {
     border-bottom-color: var(--surface-a20) !important;
     transform: translateX(48%) !important;
     border-width: 12px !important;
@@ -514,7 +751,7 @@
     transform: translateX(48%) !important;
     border-width: 10px !important;
     left: 5px !important;
-  }
+  } */
 
   .dropdown-item-link-movidesk:hover {
     background-color: var(--surface-a20) !important;
@@ -545,10 +782,16 @@
 
     .md-select-item-name {
       color: var(--light-a10) !important;
+      background-color: transparent !important;
 
       & > * {
         color: var(--light-a10) !important;
+        background-color: transparent !important;
       }
+    }
+
+    &:hover {
+      background-color: var(--surface-a30) !important;
     }
   }
 
@@ -556,12 +799,56 @@
     background-color: var(--surface-a20) !important;
     border-color: var(--surface-a30) !important;
   }
+
+  .btn-options-toolbox {
+    .button-text {
+      padding-left: 10px !important;
+    }
+  }
+
+  .toolbox-title-container {
+    background-color: var(--surface-a10) !important;
+    color: var(--light-a30) !important;
+
+    & > div > div {
+      color: var(--light-a30) !important;
+    }
+  }
+
+  .text-helper-panel {
+    background-color: var(--surface-a10) !important;
+    color: var(--light-a30) !important;
+  }
+
+  .search-container {
+    input {
+      background-color: var(--surface-a20) !important;
+      color: var(--light-a30) !important;
+
+      &::placeholder {
+        color: var(--light-a50) !important;
+      }
+    }
+  }
+
+  .go-straight-to-ticket-subcontainer {
+    background-color: var(--surface-a20) !important;
+    input {
+      background-color: var(--surface-a20) !important;
+      color: var(--light-a30) !important;
+
+      &::placeholder {
+        color: var(--light-a50) !important;
+      }
+    }
+  }
   /* Movidesk Inputs */
 
   /* Movidesk mv-input */
   .mv-input-container {
     > div:first-of-type,
-    span:first-of-type {
+    span:first-of-type,
+    sla-solution-date {
       button,
       a {
         color: var(--light-a10) !important;
@@ -582,6 +869,52 @@
 
   /* Movidesk mv-input */
 
+  /* Movidesk Loadings */
+
+  .loader3 {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 1s linear infinite;
+  }
+
+  .loader3::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    animation: prixClipFix 2s linear infinite;
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes prixClipFix {
+    0% {
+      clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+    }
+    25% {
+      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+    }
+    50% {
+      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+    }
+    75% {
+      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+    }
+    100% {
+      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+    }
+  }
+
+  /* Movidesk Loadings */
+
   /* Movidesk Misc. */
   .all-macros {
     padding-left: 11px;
@@ -600,11 +933,14 @@
 
   .button-more-tab-nav {
     border-left: none !important;
+    margin-top: 1px !important;
+
+    /* Desativado temporariamente     
     margin-top: 4px !important;
 
     .icon-mv-add {
       translate: 0px 2px !important;
-    }
+    }*/
   }
   /* Movidesk Misc. */
 }
