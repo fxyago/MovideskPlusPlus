@@ -129,31 +129,13 @@
   --light-a40: #b3b3b3;
   --light-a50: #999999;
 
-  /** Theme primary colors */
-  --primary-a0: #1975d1;
-  --primary-a10: #4783d6;
-  --primary-a20: #6592dc;
-  --primary-a30: #7ea0e1;
-  --primary-a40: #95afe6;
-  --primary-a50: #abbfec;
-  --primary-a60: #c7d9f0;
-  --primary-a70: #e1eaf1;
-
-  /** Theme surface colors */
+  /** DARK Theme surface colors */
   --surface-a0: #0f0f0f;
   --surface-a10: #262626;
   --surface-a20: #3d3d3d;
   --surface-a30: #555555;
   --surface-a40: #6f6f6f;
   --surface-a50: #8a8a8a;
-
-  /** Theme tonal surface colors */
-  --surface-tonal-a0: #161920;
-  --surface-tonal-a10: #2b2e35;
-  --surface-tonal-a20: #42444b;
-  --surface-tonal-a30: #5a5c62;
-  --surface-tonal-a40: #73757a;
-  --surface-tonal-a50: #8e8f93;
 
   /* Movidesk Geral */
 
@@ -191,6 +173,75 @@
   .tab-ticket-container,
   .tab-pane.active {
     background-color: var(--surface-a10);
+  }
+
+  .configuration-item-container {
+    .title,
+    span {
+      color: var(--light-a30) !important;
+    }
+
+    .open-in-tab {
+      color: var(--light-a30) !important;
+
+      &:hover {
+        background-color: var(--surface-a30) !important;
+      }
+    }
+  }
+
+  .configuration-summary {
+    background-color: var(--surface-a20) !important;
+
+    .panel-heading {
+      span,
+      .panel-title {
+        color: var(--light-a30) !important;
+      }
+    }
+
+    .row > div > a {
+      color: var(--light-a30) !important;
+    }
+
+    dl {
+      dt,
+      dd {
+        color: var(--light-a30) !important;
+      }
+    }
+
+    ul {
+      div,
+      strong {
+        color: var(--light-a30) !important;
+      }
+    }
+
+    .line-division {
+      background-color: var(--surface-a30) !important;
+    }
+  }
+
+  .search-buttons-container {
+    button {
+      background-color: var(--surface-a20) !important;
+      color: var(--light-a30) !important;
+
+      &:hover {
+        background-color: var(--surface-a30) !important;
+      }
+
+      &.active {
+        background-color: var(--surface-a30) !important;
+      }
+    }
+  }
+
+  .agents-box-container {
+    div > div {
+      color: var(--light-a30) !important;
+    }
   }
 
   .action-item-menu {
@@ -449,9 +500,6 @@
   }
 
   #tabs-nav li {
-    /* Desativado temporariamente
-    margin: 4px 4px 0 4px !important; */
-
     margin: 2px 2px 0 2px !important;
     border-left: 0px !important;
   }
@@ -619,16 +667,22 @@
     }
 
     .arrow {
-      border-color: var(--surface-a40) !important;
+      &.top {
+        border-top-color: var(--surface-a40);
+      }
+
+      &.bottom {
+        border-bottom-color: var(--surface-a40);
+      }
     }
 
-    &.bottom {
+    &.top {
       .arrow::after {
         border-top-color: var(--surface-a30) !important;
       }
     }
 
-    &.top {
+    &.bottom {
       .arrow::after {
         border-bottom-color: var(--surface-a30) !important;
       }
@@ -775,11 +829,6 @@
   }
   /* Movidesk SlickGrid */
 
-  /** Base Style
-  background-color: var(--surface-a20) !important;
-  color: var(--light-a10) !important;
-  */
-
   /* Movidesk Dropdown */
   .dropdown-menu {
     background-color: var(--surface-a20) !important;
@@ -869,21 +918,6 @@
     transform: translateX(-25%) !important;
   }
 
-  /* Desativado temporariamente
-   .button-more-tab-nav.dropdown-dad-movidesk::before {
-    border-bottom-color: var(--surface-a20) !important;
-    transform: translateX(48%) !important;
-    border-width: 12px !important;
-    left: 1px !important;
-  }
-
-  .button-more-tab-nav.dropdown-dad-movidesk::after {
-    border-bottom-color: var(--surface-a10) !important;
-    transform: translateX(48%) !important;
-    border-width: 10px !important;
-    left: 5px !important;
-  } */
-
   .dropdown-item-link-movidesk:hover {
     background-color: var(--surface-a20) !important;
   }
@@ -951,7 +985,22 @@
     color: var(--light-a30) !important;
   }
 
-  .search-container {
+  .row.font-16-bold,
+  .other-text-container {
+    color: var(--light-a30) !important;
+  }
+
+  .container-fluid {
+    span,
+    a {
+      color: var(--light-a30) !important;
+    }
+  }
+
+  .search-container,
+  .search-field-container {
+    border-color: var(--surface-a20) !important;
+
     input {
       background-color: var(--surface-a20) !important;
       color: var(--light-a30) !important;
@@ -1019,15 +1068,26 @@
   .button-more-tab-nav {
     border-left: none !important;
     margin-top: 1px !important;
-
-    /* Desativado temporariamente     
-    margin-top: 4px !important;
-
-    .icon-mv-add {
-      translate: 0px 2px !important;
-    }*/
   }
   /* Movidesk Misc. */
+}
+
+.tonal-blue {
+  --surface-a0: #161920 !important;
+  --surface-a10: #2b2e35 !important;
+  --surface-a20: #42444b !important;
+  --surface-a30: #5a5c62 !important;
+  --surface-a40: #73757a !important;
+  --surface-a50: #8e8f93 !important;
+}
+
+.tonal-red {
+  --surface-a0: #281916 !important;
+  --surface-a10: #3d2e2b !important;
+  --surface-a20: #534542 !important;
+  --surface-a30: #695d5a !important;
+  --surface-a40: #817573 !important;
+  --surface-a50: #998f8d !important;
 }
 
 .loader3 {
