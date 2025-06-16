@@ -208,6 +208,58 @@
     }
   }
 
+  .add-panel {
+    background-color: var(--surface-a20) !important;
+
+    color: var(--light-a30) !important;
+
+    &:hover {
+      background-color: var(--surface-a30) !important;
+    }
+  }
+
+  .confirm {
+    background-color: var(--surface-a20) !important;
+    color: var(--light-a30) !important;
+
+    .buttons-container {
+      button[data-value="no"] {
+        background-color: var(--surface-a30) !important;
+        color: var(--light-a30) !important;
+
+        &:hover {
+          background-color: var(--surface-a40) !important;
+        }
+      }
+
+      button[data-value="yes"] {
+        background-color: rgb(80, 200, 110) !important;
+
+        &:hover {
+          background-color: rgb(80, 200, 110) !important;
+        }
+      }
+    }
+  }
+
+  .panel-item {
+    background-color: var(--surface-a10) !important;
+
+    a:not(.select-item-disabled) {
+      color: var(--light-a30) !important;
+    }
+
+    &.active {
+      a {
+        background-color: var(--surface-a20) !important;
+      }
+    }
+
+    &:hover {
+      background-color: var(--surface-a30) !important;
+    }
+  }
+
   .btn-options-toolbox {
     background-color: var(--surface-a20) !important;
 
@@ -314,6 +366,65 @@
     }
   }
 
+  .ui-datepicker {
+    .ui-datepicker-title select {
+      color: var(--light-a20) !important;
+
+      option {
+        background-color: var(--surface-a20) !important;
+        color: var(--light-a20) !important;
+
+        &:hover {
+          background-color: var(--surface-a30) !important;
+        }
+      }
+    }
+
+    .ui-datepicker-calendar {
+      thead > tr > th > span {
+        color: var(--light-a30) !important;
+      }
+
+      .ui-state-default {
+        color: var(--light-a30);
+
+        &.ui-state-highlight {
+          background-color: var(--surface-a40);
+        }
+      }
+    }
+  }
+
+  .panel-body {
+    h2,
+    p {
+      color: var(--light-a30) !important;
+    }
+  }
+
+  .introduction-hello-line {
+    span,
+    strong {
+      color: var(--light-a30) !important;
+    }
+  }
+
+  .row-top-icons {
+    i,
+    div {
+      color: var(--light-a30) !important;
+    }
+  }
+
+  .home-panel div:nth-of-type(2) {
+    color: var(--light-a30) !important;
+  }
+
+  .form-toolbox {
+    border-top-color: var(--surface-a30) !important;
+    background-color: var(--surface-a20) !important;
+  }
+
   .message-menu {
     background-color: var(--surface-a10) !important;
 
@@ -357,6 +468,16 @@
   .navbar {
     background-color: var(--surface-a10) !important;
     color: var(--light-a30) !important;
+  }
+
+  .fr-command:not(.fr-active) {
+    svg > path {
+      fill: var(--light-a30);
+    }
+  }
+
+  .fr-command.fr-active {
+    background-color: var(--surface-a20);
   }
 
   .fr-toolbar,
@@ -476,6 +597,16 @@
     color: var(--light-a30);
   }
 
+  .navbar-item > a {
+    color: var(--light-a30) !important;
+  }
+
+  .info-item-container,
+  .config-item-title,
+  .title-section-config-content,
+  .subtitle-section-config-content {
+    color: var(--light-a30) !important;
+  }
   /* Movidesk Geral */
 
   /* Movidesk Popover */
@@ -869,52 +1000,6 @@
 
   /* Movidesk mv-input */
 
-  /* Movidesk Loadings */
-
-  .loader3 {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    position: relative;
-    animation: rotate 1s linear infinite;
-  }
-
-  .loader3::before {
-    content: "";
-    box-sizing: border-box;
-    position: absolute;
-    inset: 0px;
-    border-radius: 50%;
-    border: 5px solid #fff;
-    animation: prixClipFix 2s linear infinite;
-  }
-
-  @keyframes rotate {
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes prixClipFix {
-    0% {
-      clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
-    }
-    25% {
-      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
-    }
-    50% {
-      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
-    }
-    75% {
-      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
-    }
-    100% {
-      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
-    }
-  }
-
-  /* Movidesk Loadings */
-
   /* Movidesk Misc. */
   .all-macros {
     padding-left: 11px;
@@ -943,6 +1028,48 @@
     }*/
   }
   /* Movidesk Misc. */
+}
+
+.loader3 {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
+}
+
+.loader3::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  animation: prixClipFix 2s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
 }
 
 @layer base {
