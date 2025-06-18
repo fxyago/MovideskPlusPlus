@@ -122,12 +122,12 @@
   --dark-a40: #363636;
   --dark-a50: #4e4e4e;
 
-  --light-a0: #ffffff;
-  --light-a10: #f2f2f2;
-  --light-a20: #e6e6e6;
-  --light-a30: #cccccc;
-  --light-a40: #b3b3b3;
-  --light-a50: #999999;
+  --text-a0: #ffffff;
+  --text-a10: #f2f2f2;
+  --text-a20: #e6e6e6;
+  --text-a30: #cccccc;
+  --text-a40: #b3b3b3;
+  --text-a50: #999999;
 
   /** DARK Theme surface colors */
   --surface-a0: #0f0f0f;
@@ -149,7 +149,7 @@
 
   form > button {
     background-color: var(--surface-a20) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
 
     &:hover {
       background-color: var(--surface-a30) !important;
@@ -178,11 +178,11 @@
   .configuration-item-container {
     .title,
     span {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
 
     .open-in-tab {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
 
       &:hover {
         background-color: var(--surface-a30) !important;
@@ -196,25 +196,25 @@
     .panel-heading {
       span,
       .panel-title {
-        color: var(--light-a30) !important;
+        color: var(--text-a30) !important;
       }
     }
 
     .row > div > a {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
 
     dl {
       dt,
       dd {
-        color: var(--light-a30) !important;
+        color: var(--text-a30) !important;
       }
     }
 
     ul {
       div,
       strong {
-        color: var(--light-a30) !important;
+        color: var(--text-a30) !important;
       }
     }
 
@@ -226,7 +226,7 @@
   .search-buttons-container {
     button {
       background-color: var(--surface-a20) !important;
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
 
       &:hover {
         background-color: var(--surface-a30) !important;
@@ -240,7 +240,7 @@
 
   .agents-box-container {
     div > div {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
   }
 
@@ -250,7 +250,7 @@
       background-color: var(--surface-a20) !important;
 
       span {
-        color: var(--light-a30) !important;
+        color: var(--text-a30) !important;
       }
     }
 
@@ -262,7 +262,7 @@
   .add-panel {
     background-color: var(--surface-a20) !important;
 
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
 
     &:hover {
       background-color: var(--surface-a30) !important;
@@ -271,12 +271,12 @@
 
   .confirm {
     background-color: var(--surface-a20) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
 
     .buttons-container {
       button[data-value="no"] {
         background-color: var(--surface-a30) !important;
-        color: var(--light-a30) !important;
+        color: var(--text-a30) !important;
 
         &:hover {
           background-color: var(--surface-a40) !important;
@@ -297,7 +297,7 @@
     background-color: var(--surface-a10) !important;
 
     a:not(.select-item-disabled) {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
 
     &.active {
@@ -315,7 +315,7 @@
     background-color: var(--surface-a20) !important;
 
     span {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
   }
 
@@ -325,23 +325,23 @@
 
   .pull-right {
     background-color: var(--surface-a10) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
 
     padding-left: 10px;
     padding-right: 6px;
   }
 
   .action-item-menu {
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   #tabs-nav li:hover .close {
-    color: var(--light-a30);
+    color: var(--text-a30);
   }
 
   .view-ticket {
     a {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
 
     &:hover {
@@ -350,7 +350,7 @@
   }
 
   .change-visualizations {
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
 
     &:hover {
       background-color: var(--surface-a30) !important;
@@ -362,18 +362,18 @@
   }
 
   .title-panel {
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .personal-view-title {
-    color: var(--light-a20) !important;
+    color: var(--text-a20) !important;
   }
 
   .personal-visualizations-container > ul > li {
     background-color: var(--surface-a10) !important;
 
     a {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
       background-color: var(--surface-a10) !important;
     }
 
@@ -384,7 +384,7 @@
 
   .toggle-sidebar {
     background-color: var(--surface-a20) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
 
     &:hover {
       background-color: var(--surface-a30) !important;
@@ -393,11 +393,11 @@
 
   .tab-li:not(.active) {
     background-color: var(--surface-a20) !important;
-    color: var(--light-a50) !important;
+    color: var(--text-a50) !important;
 
     a,
     .tab-icon {
-      color: var(--light-a50) !important;
+      color: var(--text-a50) !important;
     }
   }
 
@@ -413,17 +413,17 @@
     background-color: var(--surface-a10) !important;
 
     .modal-title {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
   }
 
   .ui-datepicker {
     .ui-datepicker-title select {
-      color: var(--light-a20) !important;
+      color: var(--text-a20) !important;
 
       option {
         background-color: var(--surface-a20) !important;
-        color: var(--light-a20) !important;
+        color: var(--text-a20) !important;
 
         &:hover {
           background-color: var(--surface-a30) !important;
@@ -433,13 +433,13 @@
 
     .ui-datepicker-calendar {
       thead > tr > th > span {
-        color: var(--light-a30) !important;
+        color: var(--text-a30) !important;
       }
 
       .ui-state-default {
-        color: var(--light-a30);
+        color: var(--text-a30);
 
-        &.ui-state-highlight {
+        &.ui-state-hightext {
           background-color: var(--surface-a40);
         }
       }
@@ -449,26 +449,26 @@
   .panel-body {
     h2,
     p {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
   }
 
   .introduction-hello-line {
     span,
     strong {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
   }
 
   .row-top-icons {
     i,
     div {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
   }
 
   .home-panel div:nth-of-type(2) {
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .form-toolbox {
@@ -480,13 +480,13 @@
     background-color: var(--surface-a10) !important;
 
     .folder-container:hover {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
       background-color: var(--surface-a30) !important;
     }
 
     .nav-stacked > li {
       a {
-        color: var(--light-a30) !important;
+        color: var(--text-a30) !important;
       }
 
       &.active {
@@ -507,7 +507,7 @@
   .ticket-content,
   .ticket-subject,
   .label-radio-group {
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .ticket-type-label,
@@ -515,12 +515,12 @@
   .tabs-wrapper,
   .navbar {
     background-color: var(--surface-a10) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .fr-command:not(.fr-active) {
     svg > path {
-      fill: var(--light-a30);
+      fill: var(--text-a30);
     }
   }
 
@@ -531,17 +531,17 @@
   .fr-toolbar,
   .fr-wrapper {
     background-color: var(--surface-a10) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
     border-color: var(--surface-a20) !important;
 
     .fr-element.fr-view {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
   }
 
   .fr-second-toolbar {
     background-color: var(--surface-a10) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
     border-color: var(--surface-a20) !important;
     border-radius: 0px !important;
   }
@@ -561,13 +561,13 @@
   .info-alert-container,
   #button-more-icon-container {
     background-color: var(--surface-a20) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .btn-import,
   .action-buttons-square {
     background-color: var(--surface-a20) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
 
     &:hover {
       background-color: var(--surface-a30) !important;
@@ -588,7 +588,7 @@
 
   .jqx-widget {
     background-color: var(--surface-a20) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .jqx-input,
@@ -605,12 +605,12 @@
   .jqx-action-button,
   .jqx-input-content:disabled {
     background-color: var(--surface-a20) !important;
-    color: var(--light-a40) !important;
+    color: var(--text-a40) !important;
   }
 
   .jqx-input-content:not(:disabled) {
     background-color: var(--surface-a10) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .ui-datepicker {
@@ -624,13 +624,13 @@
   .icon-mv-clock,
   .time-appointment-operations > a,
   .appointments-header > div {
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .ticket-breadcrumb > li {
     a,
     span {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
   }
 
@@ -642,18 +642,18 @@
   .container-loading {
     background-color: var(--surface-a30);
     border-color: var(--surface-a30);
-    color: var(--light-a30);
+    color: var(--text-a30);
   }
 
   .navbar-item > a {
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .info-item-container,
   .config-item-title,
   .title-section-config-content,
   .subtitle-section-config-content {
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
   /* Movidesk Geral */
 
@@ -663,7 +663,7 @@
     border-color: var(--surface-a40) !important;
 
     .popover-content {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
 
     .arrow {
@@ -702,7 +702,7 @@
 
     .select2-chosen {
       background-color: var(--surface-a20) !important;
-      color: var(--light-a10) !important;
+      color: var(--text-a10) !important;
     }
   }
 
@@ -716,7 +716,7 @@
 
     .select2-chosen {
       background-color: var(--surface-a30) !important;
-      color: var(--light-a10) !important;
+      color: var(--text-a10) !important;
     }
   }
 
@@ -726,7 +726,7 @@
 
     .select2-choices {
       background-color: var(--surface-a20) !important;
-      color: var(--light-a10) !important;
+      color: var(--text-a10) !important;
     }
   }
 
@@ -749,12 +749,12 @@
   }
 
   .select2-input {
-    color: var(--light-a10) !important;
+    color: var(--text-a10) !important;
   }
 
   .md-select-justificationx,
   .md-select-item-idented {
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .select2-results {
@@ -767,7 +767,7 @@
     .select2-result-label,
     .select2-result-label > span {
       background-color: var(--surface-a20) !important;
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
   }
 
@@ -777,17 +777,17 @@
     .select2-result-label,
     .select2-result-label > span {
       background-color: var(--surface-a10) !important;
-      color: var(--light-a50) !important;
+      color: var(--text-a50) !important;
     }
   }
 
-  .select2-result-selectable.select2-highlighted {
+  .select2-result-selectable.select2-hightexted {
     background-color: var(--surface-a30) !important;
 
     .select2-result-label,
     .select2-result-label > span {
       background-color: var(--surface-a30) !important;
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
   }
   /* Movidesk Select2 */
@@ -808,10 +808,10 @@
     border-right: 0px !important;
     border-top-color: var(--surface-a30) !important;
     background-color: var(--surface-a20) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
 
     .inactive {
-      color: var(--light-a50) !important;
+      color: var(--text-a50) !important;
     }
   }
 
@@ -820,30 +820,30 @@
   }
 
   .slick-column-name {
-    color: var(--light-a10) !important;
+    color: var(--text-a10) !important;
   }
 
   .slick-sort-indicator {
     background-color: var(--surface-a20) !important;
-    color: var(--light-a20) !important;
+    color: var(--text-a20) !important;
   }
   /* Movidesk SlickGrid */
 
   /* Movidesk Dropdown */
   .dropdown-menu {
     background-color: var(--surface-a20) !important;
-    color: var(--light-a10) !important;
+    color: var(--text-a10) !important;
 
     li {
       background-color: var(--surface-a20) !important;
 
       span,
       a {
-        color: var(--light-a10) !important;
+        color: var(--text-a10) !important;
 
         span,
         div {
-          color: var(--light-a10) !important;
+          color: var(--text-a10) !important;
         }
 
         &:hover {
@@ -853,12 +853,12 @@
       }
 
       &.dropdown-header {
-        color: var(--light-a30) !important;
+        color: var(--text-a30) !important;
       }
 
       &:not(.dropdown-header):hover {
         background-color: var(--surface-a30) !important;
-        color: var(--light-a20) !important;
+        color: var(--text-a20) !important;
       }
     }
   }
@@ -868,17 +868,17 @@
   }
 
   #goto-ticket {
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .dropdown-menu-movidesk,
   .list-search-result-container {
     background-color: var(--surface-a10) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
     border-color: var(--surface-a20) !important;
 
     & > a {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
 
       &:hover {
         background-color: var(--surface-a20) !important;
@@ -887,7 +887,7 @@
 
     &.dropdown-header,
     .dropdown-header {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
   }
 
@@ -930,7 +930,7 @@
   .md-select-treeview-dropdown-field {
     background-color: var(--surface-a20) !important;
     border-color: var(--surface-a40) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .input-mv-new:hover {
@@ -939,18 +939,18 @@
 
   .lbl-input-text,
   .info-item-container-custom-field {
-    color: var(--light-a30);
+    color: var(--text-a30);
   }
 
   .md-select-item {
     background-color: var(--surface-a20) !important;
 
     .md-select-item-name {
-      color: var(--light-a10) !important;
+      color: var(--text-a10) !important;
       background-color: transparent !important;
 
       & > * {
-        color: var(--light-a10) !important;
+        color: var(--text-a10) !important;
         background-color: transparent !important;
       }
     }
@@ -973,27 +973,27 @@
 
   .toolbox-title-container {
     background-color: var(--surface-a10) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
 
     & > div > div {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
   }
 
   .text-helper-panel {
     background-color: var(--surface-a10) !important;
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .row.font-16-bold,
   .other-text-container {
-    color: var(--light-a30) !important;
+    color: var(--text-a30) !important;
   }
 
   .container-fluid {
     span,
     a {
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
     }
   }
 
@@ -1003,10 +1003,10 @@
 
     input {
       background-color: var(--surface-a20) !important;
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
 
       &::placeholder {
-        color: var(--light-a50) !important;
+        color: var(--text-a50) !important;
       }
     }
   }
@@ -1015,10 +1015,10 @@
     background-color: var(--surface-a20) !important;
     input {
       background-color: var(--surface-a20) !important;
-      color: var(--light-a30) !important;
+      color: var(--text-a30) !important;
 
       &::placeholder {
-        color: var(--light-a50) !important;
+        color: var(--text-a50) !important;
       }
     }
   }
@@ -1031,14 +1031,14 @@
     sla-solution-date {
       button,
       a {
-        color: var(--light-a10) !important;
+        color: var(--text-a10) !important;
         background-color: inherit !important;
       }
 
       > span:first-of-type {
         background-color: var(--surface-a20) !important;
         border-color: var(--surface-a40) !important;
-        color: var(--light-a10) !important;
+        color: var(--text-a10) !important;
       }
 
       > span:first-of-type:hover {
@@ -1069,10 +1069,15 @@
     border-left: none !important;
     margin-top: 1px !important;
   }
+
+  .toolbox.default-toolbox.ticket-toolbox-options {
+    z-index: 5 !important;
+  }
+
   /* Movidesk Misc. */
 }
 
-.tonal-blue {
+.tone-blue {
   --surface-a0: #161920 !important;
   --surface-a10: #2b2e35 !important;
   --surface-a20: #42444b !important;
@@ -1081,13 +1086,31 @@
   --surface-a50: #8e8f93 !important;
 }
 
-.tonal-red {
+.tone-red {
   --surface-a0: #281916 !important;
   --surface-a10: #3d2e2b !important;
   --surface-a20: #534542 !important;
   --surface-a30: #695d5a !important;
   --surface-a40: #817573 !important;
   --surface-a50: #998f8d !important;
+}
+
+.tone-green {
+  --surface-a0: #182015 !important;
+  --surface-a10: #2d352a !important;
+  --surface-a20: #444b41 !important;
+  --surface-a30: #5c6259 !important;
+  --surface-a40: #757a73 !important;
+  --surface-a50: #8f938d !important;
+}
+
+.tone-purple {
+  --surface-a0: #1d151b !important;
+  --surface-a10: #322a30 !important;
+  --surface-a20: #484146 !important;
+  --surface-a30: #60595e !important;
+  --surface-a40: #787277 !important;
+  --surface-a50: #928d90 !important;
 }
 
 .loader3 {
@@ -1166,4 +1189,7 @@
   menu {
     list-style: revert;
   }
+}
+
+@layer components {
 }
