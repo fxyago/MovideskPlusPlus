@@ -1,12 +1,16 @@
 import { Toaster } from "@/components/ui/sonner";
-import { waitForElement } from "@/lib/utils";
+import { bindTicketBookmark, getOpenedTickets } from "@/lib/MovideskActions";
+import {
+  observeElementInsertion,
+  onPageLeave,
+  waitForElement,
+} from "@/lib/utils";
+import { TicketWithTimestamp } from "@/types";
 import { createRoot } from "react-dom/client";
 import { toast } from "sonner";
 import { MainMenu } from "./menu";
+import { mppStore } from "./state";
 import "./style.css";
-
-if (localStorage.getItem("theme") === "dark")
-  document.documentElement.classList.add("dark");
 
 waitForElement("#main-menu", (element) => {
   const toastFooter = document.createElement("footer");
@@ -40,4 +44,36 @@ waitForElement("#tabs", () => {
 
     if (ticketTabsElement) ticketTabsElement.style.cssText = widthText;
   }, 2000);
+});
+
+observeElementInsertion(
+  ["tab-li", "tab-ticket", "tab-ticket-form"],
+  bindTicketBookmark
+);
+
+onPageLeave(() => {
+  const tickets = getOpenedTickets() ?? [];
+
+  const state = mppStore.getState();
+
+  const savedTickets = state.ticketHistory;
+
+  const map = new Map<string, TicketWithTimestamp>();
+
+  savedTickets.forEach((ticket) => {
+    map.set(ticket.id, ticket);
+  });
+
+  let ticketsSalvos = 0;
+
+  tickets.forEach((ticket) => {
+    if (!map.has(ticket.id)) {
+      mppStore
+        .getState()
+        .addToHistory({ ...ticket, timestamp: new Date().getTime() });
+      ticketsSalvos++;
+    }
+  });
+
+  console.log("Tickets salvos: ", ticketsSalvos);
 });
