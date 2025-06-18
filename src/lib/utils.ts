@@ -75,9 +75,21 @@ export const observeElementInsertion = (
 export const waitToast = (callback: () => void) =>
   waitForElement(".toaster", callback);
 
+const splitOnFirts = (str: string, delimiter: string) => {
+  const index = str.indexOf(delimiter);
+
+  if (index === -1) return [str, ""];
+
+  const partBefore = str.substring(0, index);
+  const partAfter = str.substring(index + delimiter.length);
+  return [partBefore, partAfter];
+};
+
 export const titleToTicket = (ticketTitle: string): Ticket => {
-  const id = ticketTitle.split("-")[0];
-  const title = ticketTitle.split("-")[1];
+  const split = splitOnFirts(ticketTitle, "-");
+
+  const id = split[0];
+  const title = split[1];
   return { id, title };
 };
 

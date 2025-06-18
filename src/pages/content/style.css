@@ -1069,12 +1069,11 @@
     border-left: none !important;
     margin-top: 1px !important;
   }
-
-  .toolbox.default-toolbox.ticket-toolbox-options {
-    z-index: 5 !important;
-  }
-
   /* Movidesk Misc. */
+}
+
+.toolbox.default-toolbox.ticket-toolbox-options {
+  z-index: 5 !important;
 }
 
 .tone-blue {

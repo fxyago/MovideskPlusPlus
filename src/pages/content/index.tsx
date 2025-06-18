@@ -52,7 +52,7 @@ observeElementInsertion(
 );
 
 onPageLeave(() => {
-  const tickets = getOpenedTickets() ?? [];
+  const ticketsAbertos = getOpenedTickets() ?? [];
 
   const state = mppStore.getState();
 
@@ -66,14 +66,20 @@ onPageLeave(() => {
 
   let ticketsSalvos = 0;
 
-  tickets.forEach((ticket) => {
+  if (ticketsAbertos.length === 0) return;
+
+  state.setLastSessionTickets(
+    ticketsAbertos.map((ticket) => ({
+      ...ticket,
+      timestamp: new Date().getTime(),
+    }))
+  );
+
+  ticketsAbertos.forEach((ticket) => {
     if (!map.has(ticket.id)) {
-      mppStore
-        .getState()
-        .addToHistory({ ...ticket, timestamp: new Date().getTime() });
+      state.addToHistory({ ...ticket, timestamp: new Date().getTime() });
       ticketsSalvos++;
     }
   });
-
   console.log("Tickets salvos: ", ticketsSalvos);
 });

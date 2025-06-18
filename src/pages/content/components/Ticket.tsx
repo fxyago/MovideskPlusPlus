@@ -23,7 +23,7 @@ export const Ticket = ({
           <Button
             variant="ghost"
             className={cn(
-              "truncate w-full text-left rounded-none h-fit border-bottom border-background/80 px-2 py-4 text-lg font-medium hover:brightness-125",
+              "truncate w-full justify-start rounded-none h-fit border-bottom border-background/80 px-8 py-4 text-lg font-medium hover:brightness-125",
               className
             )}
             onClick={() => openTicket(ticket.id)}
@@ -31,7 +31,7 @@ export const Ticket = ({
             {ticket.id} - {ticket.title}
           </Button>
         </TooltipTrigger>
-        <TooltipContent className="z-10 text-foreground *:text-base bg-muted rounded-md shadow-md flex flex-col">
+        <TooltipContent className="text-foreground *:text-base bg-muted rounded-md shadow-md flex flex-col">
           <span>Ticket: {ticket.id}</span>
           <span>Título: {ticket.title}</span>
           <span>Salvo em: {new Date(ticket.timestamp).toLocaleString()}</span>

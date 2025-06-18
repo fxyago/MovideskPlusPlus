@@ -72,14 +72,30 @@ const createTicketHistorySlice: StateCreator<TicketHistoryStore> = (
     })),
 });
 
+interface TicketLastSessionStore {
+  ticketsLastSession: TicketWithTimestamp[];
+  setLastSessionTickets: (tickets: TicketWithTimestamp[]) => void;
+}
+
+const createTicketLastSessionSlice: StateCreator<TicketLastSessionStore> = (
+  set
+) => ({
+  ticketsLastSession: [] as TicketWithTimestamp[],
+  setLastSessionTickets: (tickets: TicketWithTimestamp[]) =>
+    set(() => ({
+      ticketsLastSession: tickets,
+    })),
+});
+
 export const mppStore = createStore<
-  ThemeStore & TicketBookmarkStore & TicketHistoryStore
+  ThemeStore & TicketBookmarkStore & TicketHistoryStore & TicketLastSessionStore
 >()(
   persist(
     (...a) => ({
       ...createThemeSlice(...a),
       ...createTicketBookmarkSlice(...a),
       ...createTicketHistorySlice(...a),
+      ...createTicketLastSessionSlice(...a),
     }),
     {
       name: "ticketStore",
@@ -89,8 +105,6 @@ export const mppStore = createStore<
 );
 
 mppStore.subscribe((state, prevState) => {
-  console.log("Teste subscribe!!", state.tone, prevState.tone);
-
   const currentTone = state.tone;
   const previousTone = prevState.tone;
 

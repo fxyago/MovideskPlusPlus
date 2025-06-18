@@ -1,4 +1,5 @@
 import { mppStore } from "@/pages/content/state";
+import { toast } from "sonner";
 import { titleToTicket } from "./utils";
 
 export const openTicket = (ticketId: string) => {
@@ -52,13 +53,14 @@ export const bindTicketBookmark = (element: HTMLElement) => {
   const isBookmarked = mppStore.getState().isBookmarked(ticket.id);
 
   const className =
-    "absolute top-1 left-1 bookmark-button z-20 opacity-0 [.bookmarked]:opacity-100 [.bookmarked]:fill-white in-focus:opacity-100";
+    "absolute top-1 left-1 bookmark-button z-10 opacity-0 group-hover:opacity-100 group-[.bookmarked]:opacity-100 group-[.bookmarked]:**:[svg]:fill-current";
 
   bookmarkButton.classList.add(...className.split(" "));
 
-  if (isBookmarked) bookmarkButton.classList.add("bookmarked");
+  element.classList.add("group");
+  if (isBookmarked) element.classList.add("bookmarked");
 
-  bookmarkButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>`;
+  bookmarkButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>`;
   element.appendChild(bookmarkButton);
 
   bookmarkButton.addEventListener("click", () => {
@@ -66,11 +68,13 @@ export const bindTicketBookmark = (element: HTMLElement) => {
     const isBookmarked = store.isBookmarked(title.split("-")[0]);
 
     if (isBookmarked) {
-      console.log("Desfavoritando...");
       store.unbookmark(ticket.id);
+      element.classList.remove("bookmarked");
+      toast.success(`Ticket ${ticket.id} removido dos favoritos!`);
     } else {
-      console.log("Favoritando...");
       store.bookmark({ ...ticket, timestamp: new Date().getTime() });
+      element.classList.add("bookmarked");
+      toast.success(`Ticket ${ticket.id} adicionado aos favoritos!`);
     }
   });
 };
