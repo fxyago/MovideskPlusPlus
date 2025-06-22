@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/movidesk.css">
+  <link rel="stylesheet" href="css/movidesk2.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/src/pages/content/style.css">
+  <title>Movidesk++ UI Dev Mode</title>
+</head>
+
+<body class="authenticated base-body movidesk-is-show home">
+  <header id="main-header" style="width: calc(100% - 50px); height: 53px;">
+    <div id="main-menu" class="navbar" role="navigation" style="">
+      <div id="tabs" class="" role="navigation" style="width: calc(100% - 240px);">
+        <div class="tabs-wrapper">
+          <div class="tabs-container">
+            <div class="inner-overflow">
+              <ul id="tabs-nav" class="nav navbar-nav ">
+                <div class="fake-tab-mobile fake-home">
+                  <div class="icon-mv-home"></div>
+                  <div class="fake-tab-text">Página inicial</div>
+                </div>
+              </ul>
+            </div>
+          </div>
+          <div class="dropdown tabs-dropdown-container" id="tabs-dropdown-btn-container">
+            <button class="dropdown-toggle" type="button" id="tabs-dropdown-btn" data-toggle="dropdown"
+              aria-expanded="false" style="display: none">
+              <span class="number-hidden-tabs"></span>
+            </button>
+            <ul id="tabs-dropdown-nav" class="dropdown-menu" role="menu" aria-labelledby="tabs-dropdown-btn">
+
+              <div class="fake-tab-mobile fake-config">
+                <div class="icon-mv-settings"></div>
+                <div class="fake-tab-text">Configurações</div>
+              </div>
+            </ul>
+          </div>
+          <div class="button-more-tab-nav dropdown-dad-movidesk">
+            <div class="button-more-icon-container" id="button-more-icon-container">
+              <span class="icon-mv-add"></span>
+            </div>
+            <ul class="dropdown-menu-movidesk open-right" role="menu" id="more-itens-button-new-ticket">
+              <li class="dropdown-item-link-movidesk" id="top-bar-new-ticket-link">
+                <a href="/Ticket" class="new-ticket dropdown-item-with-icon" data-color="Ticket">
+                  <span class="icon-mv-earphones-alt"></span>
+                  <div class="dropdown-item-text-movidesk">Novo Ticket</div>
+                  <div class="dropdown-item-text-movidesk-shortcuts">Alt + T</div>
+                </a>
+              </li>
+              <li class="dropdown-item-link-movidesk" id="top-bar-new-person-link">
+                <a href="/Person" class="new-person dropdown-item-with-icon" data-color="Configuration"
+                  data-tab-origin="configuration">
+                  <span class="icon-mv-user-add"></span>
+                  <div class="dropdown-item-text-movidesk">Nova Pessoa</div>
+                  <div class="dropdown-item-text-movidesk-shortcuts">Alt + P</div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li class="dropdown-item-link-movidesk closeAllTabs" id="closeAllTabs">
+                <a href="#">
+                  <div class="dropdown-item-text-movidesk">Fechar todas as guias</div>
+                </a>
+              </li>
+              <li class="dropdown-item-link-movidesk closeAllTabsLessCurrent" id="closeAllTabsLessCurrent">
+                <a href="#">
+                  <div class="dropdown-item-text-movidesk">Fechar todas, menos a atual</div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="top-user-itens">
+        <div class="button-main-menu-toggle main-menu-toggle color-menu-personal" id="button-main-menu-topbar">
+          <i class="icon-mv-mv-menu"></i>
+        </div>
+        <ul class="wrapper-list-user-itens">
+          <li class="empty-wrapper"></li>
+          <li class="top-user-item-search top-search-field" title="Pesquisar">
+            <div class="navbar-form navbar-left container-search-header" role="search">
+              <div class="wrapper">
+                <input id="goto-ticket" type="text" autocomplete="off" class="form-control top-search"
+                  placeholder="Localize seu ticket">
+                <input id="goto-ticket-before-keydown" type="text" autocomplete="off" class="hidden">
+                <button id="btn-goto-ticket" class="">
+                  <span class="top-icon-mv icon-mv-search"></span>
+                </button>
+              </div>
+            </div>
+            <i class="top-icon-mv icon-mv-search" id="top-bar-search-icon"></i>
+          </li>
+          <li id="btn-ticket-history" class="dropdown-dad-movidesk top-user-itens-icons-container"
+            data-original-title="" title="">
+            <div id="top-bar-clock-icon">
+              <i class="top-icon-mv icon-mv-clock"></i>
+            </div>
+            <ul id="ticket-history" class="dropdown-menu-movidesk open-left" role="menu"></ul>
+          </li>
+          <li class="dropdown-dad-movidesk top-user-itens-icons-container flare-flags" id="top-notifications">
+            <div id="top-bar-bell-icon">
+              <i class="top-icon-mv icon-mv-bell icon-notify-container">
+                <span id="notifications-count" class="header-notification-badge badge-notifications count0">0</span>
+              </i>
+            </div>
+            <ul class="dropdown-menu-movidesk open-left menu-notifications" role="menu">
+              <li class="item-no-count disable">
+                <a href="#">
+                  <div class="dropdown-item-text-movidesk">Nenhuma notificação</div>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown-dad-movidesk chat-group-dropdown-actions top-user-itens-icons-container">
+            <div id="top-bar-chat-balloon-icon">
+              <i class="top-icon-mv icon-mv-chat-status chat-icon-status status-0">
+                <span id="message-notification-count" class="header-notification-badge badge-chat count0"></span>
+              </i>
+            </div>
+            <ul id="message-notification-items" class="dropdown-menu-movidesk open-left fancy-scroll" role="menu">
+
+              <li class="no-chat-notification dropdown-item-link-movidesk disable">
+                <a href="#">
+                  <div class="dropdown-item-text-movidesk">Nenhuma notificação</div>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+          <li id="root" class="top-user-itens-icons-container">
+
+          </li>
+
+          <li style="display:none;">
+            <i class="top-icon-mv icon-mv-call-in"></i>
+          </li>
+        </ul>
+        <div class="user-avatar-container dropdown-dad-movidesk" id="edit-profile-menu">
+          <div class="user-avatar" id="top-bar-avatar-picture">
+
+
+            <img class="img-avatar"
+              src="https://s3.amazonaws.com/movidesk-files/6E4C86BB8EC59C892A56D08C2306F230?AWSAccessKeyId=AKIAWSRCTWGBHCVKCQGD&amp;Expires=1750552913&amp;Signature=J50clmz2JUUiCDQsuqrLtstR11Y%3D">
+          </div>
+          <a id="editProfileUserName" style="display: none;">Yago Bardini</a>
+          <ul class="dropdown-menu-movidesk open-left" role="menu">
+            <li class="dropdown-header-movidesk">
+              <div class="dropdown-header-text-movidesk" style="">Yago Bardini</div>
+            </li>
+            <li class=" divider"></li>
+            <li class=" dropdown-item-link-movidesk" id="top-bar-edit-profile">
+              <a href="/Account/EditProfile" class="open-in-tab dropdown-item-with-icon" data-force-new-tab="true"
+                data-icon="icon-mv-settings" data-only-one="true" data-tab-class="account-tab"
+                data-color="Configuration" data-tab-origin="configuration">
+                <span class="icon-mv-user"></span>
+                <div class="dropdown-item-text-movidesk" style="font-size: inherit">Editar perfil</div>
+              </a>
+            </li>
+            <li class=" dropdown-item-link-movidesk" id="top-bar-help">
+              <a class="dropdown-item-with-icon" href="https://atendimento.movidesk.com/kb/pt-br" target="_blank">
+                <span class="icon-mv-question"></span>
+                <div class="dropdown-item-text-movidesk" style="font-size: inherit">Ajuda</div>
+              </a>
+            </li>
+
+            <li class=" dropdown-item-link-movidesk" id="top-bar-processing-center">
+              <a href="/ProcessingCenter" class="open-in-tab dropdown-item-with-icon" data-force-new-tab="true"
+                data-icon="icon-mv-cloud-download" data-only-one="true" data-tab-class="tab-processing-center"
+                data-color="Report">
+                <span class="icon-mv-cloud-download"></span>
+                <div class="dropdown-item-text-movidesk" style="font-size: inherit">Central de Processamentos</div>
+              </a>
+            </li>
+
+            <li class=" divider divider-without-margin"></li>
+            <li class=" dropdown-item-link-movidesk" id="top-bar-go-directly-to-ticket">
+              <a href="#" class="dropdown-item-with-icon easter-egg-ctrl-space-user-menu-button" style="width: 100%;">
+                <span style=""></span>
+                <div class="dropdown-item-text-movidesk" style="font-size: inherit">Vá direto ao ticket</div>
+                <div class="dropdown-item-text-movidesk-shortcuts" style="">Ctrl + Espaço</div>
+              </a>
+            </li>
+            <li class=" divider divider-without-margin"></li>
+            <li class=" dropdown-item-link-movidesk">
+              <a id="terms-of-use" class="dropdown-item"
+                href="https://atendimento.movidesk.com/kb/article/248470/politicas-de-uso-movidesk" target="_blank">
+                <span></span>
+                <div class="dropdown-item-text-movidesk" style="font-size: inherit">Termos de uso</div>
+              </a>
+            </li>
+            <li class=" dropdown-item-link-movidesk">
+              <a id="privacy-policy" class="dropdown-item " href="https://www.zenvia.com/politica-de-privacidade/"
+                target="_blank">
+                <span></span>
+                <div class="dropdown-item-text-movidesk" style="font-size: inherit"> Política de privacidade</div>
+              </a>
+            </li>
+            <li class=" dropdown-item-link-movidesk">
+              <a id="sign-out-link" class="dropdown-item-with-icon" href="/Account/Logout">
+                <span></span>
+                <div class="dropdown-item-text-movidesk" style="font-size: inherit">
+                  Sair
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="bar-tab-color-preview" style="background-color: rgb(239, 83, 80);"></div>
+    </div>
+  </header>
+</body>
+<script type="module" src="./index.tsx"></script>
+
+</html>
