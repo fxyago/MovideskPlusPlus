@@ -1,15 +1,15 @@
-import { useStore } from "zustand";
-import { Ticket } from "../components/Ticket";
-import { mppStore } from "../state";
+import { useStore } from 'zustand';
+import { mppStore } from '../state';
+import { TicketList } from '../TicketList';
 
 export default function Bookmarks() {
   const store = useStore(mppStore);
 
   return (
-    <span id="ticketBookmarks" className="flex flex-col">
-      {store.ticketsBookmarked.map((ticket) => (
-        <Ticket key={ticket.id} ticket={ticket} />
-      ))}
-    </span>
+    <TicketList
+      list={store.ticketsBookmarked}
+      emptyMessage="Nenhum ticket favoritado"
+      tooltipMessage="Favoritado em:"
+    />
   );
 }

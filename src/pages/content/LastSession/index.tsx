@@ -1,20 +1,14 @@
-import { useStore } from "zustand";
-import { Ticket } from "../components/Ticket";
-import { mppStore } from "../state";
+import { useStore } from 'zustand';
+import { mppStore } from '../state';
+import { TicketList } from '../TicketList';
 
 export default function LastSession() {
   const store = useStore(mppStore);
 
   return (
-    <span id="ticketLastSession" className="flex flex-col items-center">
-      {store.getTicketBookmarks.length === 0 && (
-        <span className="m-auto text-center text-muted-foreground">
-          Nenhum ticket salvo na última sessão
-        </span>
-      )}
-      {store.ticketsLastSession.map((ticket) => (
-        <Ticket key={ticket.id} ticket={ticket} />
-      ))}
-    </span>
+    <TicketList
+      list={store.ticketsLastSession}
+      emptyMessage="Nenhum ticket salvo na última sessão"
+    />
   );
 }

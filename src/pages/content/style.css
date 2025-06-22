@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @source inline("{!,}{hover:,}bg-{zinc,stone,neutral,slate,gray}-{50,{100..900..100},950}");
 @source inline("{!,}{hover:,}text-{zinc,stone,neutral,slate,gray}-{50,{100..900..100},950}");
@@ -274,7 +274,7 @@
     color: var(--text-a30) !important;
 
     .buttons-container {
-      button[data-value="no"] {
+      button[data-value='no'] {
         background-color: var(--surface-a30) !important;
         color: var(--text-a30) !important;
 
@@ -283,7 +283,7 @@
         }
       }
 
-      button[data-value="yes"] {
+      button[data-value='yes'] {
         background-color: rgb(80, 200, 110) !important;
 
         &:hover {
@@ -1121,7 +1121,7 @@
 }
 
 .loader3::before {
-  content: "";
+  content: '';
   box-sizing: border-box;
   position: absolute;
   inset: 0px;

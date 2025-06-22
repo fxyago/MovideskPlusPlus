@@ -1,15 +1,15 @@
-import { useStore } from "zustand";
-import { Ticket } from "../components/Ticket";
-import { mppStore } from "../state";
+import { useStore } from 'zustand';
+import { mppStore } from '../state';
+import { TicketList } from '../TicketList';
 
 export default function History() {
   const store = useStore(mppStore);
 
   return (
-    <span id="ticketHistory" className="flex flex-col">
-      {store.ticketHistory.map((ticket) => (
-        <Ticket key={ticket.id} ticket={ticket} />
-      ))}
-    </span>
+    <TicketList
+      list={store.ticketHistory}
+      emptyMessage="Nenhum ticket no histórico"
+      tooltipMessage="Visto pela última vez em:"
+    />
   );
 }
