@@ -4,7 +4,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-import mpp_logo from '@assets/img/M++_Logo.png';
+import mpp_logo from '@/assets/img/M++_Logo.png?inline';
 import AutoTheme from '../AutoTheme';
 import MenuTabs from '../Tabs';
 
@@ -13,14 +13,14 @@ export const MainMenu = () => {
     <>
       <AutoTheme />
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex items-center justify-center outline-none select-none size-full">
+        <DropdownMenuTrigger className="flex size-full items-center justify-center outline-none select-none">
           <img
             src={mpp_logo}
             alt="Movidesk++ logo"
-            className="outline-none select-none block align-middle h-12"
+            className="block h-12 align-middle outline-none select-none"
           />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="flex w-[360px] min-h-[160px] h-auto max-h-[560px] bg-muted rounded-lg shadow-lg mr-8">
+        <DropdownMenuContent className="bg-muted mr-8 flex h-auto max-h-[560px] min-h-[160px] w-[360px] rounded-lg shadow-lg">
           <MenuTabs />
         </DropdownMenuContent>
       </DropdownMenu>

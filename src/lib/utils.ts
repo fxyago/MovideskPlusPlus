@@ -1,7 +1,7 @@
 import { Ticket, Tone } from '@/types';
 import { clsx, type ClassValue } from 'clsx';
-import { groupBy, map, maxBy } from 'lodash-es';
 import { twMerge } from 'tailwind-merge';
+import { groupBy, maxBy } from './lowerdash';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -106,11 +106,16 @@ export const mergeAndFilter = <T>({
   maxCallback?: (obj: T) => any;
 }): T[] => {
   const combinedArray = [...arr1, ...arr2];
-  const groupedByProperty = groupBy(combinedArray, groupProperty);
+  const groupedByProperty = groupBy(combinedArray, groupProperty as any);
 
-  return map(groupedByProperty, (group) =>
-    maxCallback ? maxBy(group, maxCallback)! : group[0]
-  );
+  return Object.values(groupedByProperty).map((group) => {
+    if (maxCallback) {
+      const maxItem = maxBy(group, maxCallback);
+      return maxItem!;
+    } else {
+      return group[0];
+    }
+  });
 };
 
 export const onPageLeave = (callback: () => void) => {

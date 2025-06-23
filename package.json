@@ -14,7 +14,8 @@
     "dev": "nodemon --config nodemon.chrome.json",
     "dev:chrome": "nodemon --config nodemon.chrome.json",
     "dev:firefox": "nodemon --config nodemon.firefox.json",
-    "dev:ui": "vite --config vite.config.ui.ts"
+    "dev:ui": "vite --config vite.config.ui.ts",
+    "tsc": "tsc --noEmit"
   },
   "type": "module",
   "dependencies": {
@@ -33,7 +34,6 @@
     "date-fns": "^4.1.0",
     "fuse.js": "^7.1.0",
     "jotai": "^2.12.5",
-    "lodash-es": "^4.17.21",
     "lucide-react": "^0.514.0",
     "next-themes": "^0.4.6",
     "react": "^19.1.0",
@@ -46,7 +46,7 @@
     "zustand-chrome-storage": "^1.0.0"
   },
   "devDependencies": {
-    "@crxjs/vite-plugin": "^2.0.1",
+    "@crxjs/vite-plugin": "^2.0.2",
     "@eslint/css": "^0.9.0",
     "@eslint/js": "^9.29.0",
     "@tailwindcss/vite": "^4.1.10",
@@ -61,7 +61,7 @@
     "@vitejs/plugin-react": "^4.5.2",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.5.0",
     "eslint-plugin-react": "^7.37.5",

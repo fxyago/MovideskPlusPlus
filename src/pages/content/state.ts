@@ -39,6 +39,7 @@ const createThemeSlice: StateCreator<ThemeStore> = (set, get) => ({
 interface TicketBookmarkStore {
   bookmarks: TicketWithTimestamp[];
   bookmark: (ticket: TicketWithTimestamp) => void;
+  setBookmarks: (bookmarks: TicketWithTimestamp[]) => void;
   unbookmark: (ticketId: string) => void;
   isBookmarked: (ticketId: string) => boolean;
   clearBookmarks: () => void;
@@ -49,6 +50,7 @@ const createTicketBookmarkSlice: StateCreator<TicketBookmarkStore> = (
   get
 ) => ({
   bookmarks: [] as TicketWithTimestamp[],
+  setBookmarks: (bookmarks: TicketWithTimestamp[]) => set({ bookmarks }),
   bookmark: (ticket: TicketWithTimestamp) =>
     set((state) => ({
       bookmarks: [...state.bookmarks, ticket] as TicketWithTimestamp[],
@@ -65,6 +67,7 @@ const createTicketBookmarkSlice: StateCreator<TicketBookmarkStore> = (
 
 interface TicketHistoryStore {
   history: TicketWithTimestamp[];
+  setHistory: (history: TicketWithTimestamp[]) => void;
   addToHistory: (...tickets: TicketWithTimestamp[]) => void;
   removeFromHistory: (...tickets: TicketWithTimestamp[]) => void;
   clearHistory: () => void;
@@ -75,7 +78,7 @@ const createTicketHistorySlice: StateCreator<TicketHistoryStore> = (
   get
 ) => ({
   history: [] as TicketWithTimestamp[],
-  getHistory: () => get().history,
+  setHistory: (history: TicketWithTimestamp[]) => set({ history }),
   addToHistory: (...tickets: TicketWithTimestamp[]) =>
     set((state) => ({
       history: mergeAndFilter({
@@ -129,13 +132,37 @@ export const mppStore = createStore<
       storage: createJSONStorage(() =>
         import.meta.env.DEV ? localStorage : ChromeLocalStorage
       ),
+      version: 1,
     }
   )
 );
 
+const fixTicketsOrder = (
+  state: GeneralConfigStore &
+    ThemeStore &
+    TicketBookmarkStore &
+    TicketHistoryStore &
+    TicketLastSessionStore
+) => {
+  state.setHistory(state.history.toSorted((a, b) => b.timestamp - a.timestamp));
+
+  state.setBookmarks(
+    state.bookmarks.toSorted((a, b) => b.timestamp - a.timestamp)
+  );
+};
+
+mppStore.persist.onHydrate((state) => fixTicketsOrder(state));
+
 mppStore.subscribe((state, prevState) => {
   onToneConfigChange(state.tone, prevState.tone);
   onCustomToneChange(state.useCustomTone, prevState.useCustomTone);
+
+  if (
+    state.history.length !== prevState.history.length ||
+    state.bookmarks.length !== prevState.bookmarks.length
+  ) {
+    fixTicketsOrder(state);
+  }
 });
 
 if (import.meta.env.DEV) {
