@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  root: './src/dev/ui/',
+  root: './dev/ui/',
   plugins: [tailwindcss(), tsconfigPaths(), react()],
   publicDir: resolve(__dirname, 'public'),
 });

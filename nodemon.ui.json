@@ -2,14 +2,8 @@
   "env": {
     "__DEV__": "true"
   },
-  "watch": [
-    "src",
-    "utils",
-    "vite.config.ui.ts"
-  ],
+  "watch": ["src", "utils", "vite.config.ui.ts"],
   "ext": "tsx,css,html,ts,json",
-  "ignore": [
-    "src/**/*.spec.ts"
-  ],
+  "ignore": ["src/**/*.spec.ts"],
   "exec": "vite --config vite.config.ui.ts --mode development"
 }
