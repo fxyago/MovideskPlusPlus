@@ -1,33 +1,20 @@
-import { TicketWithTimestamp } from '@/types';
-import { Ticket } from '../components/Ticket';
-
 export const TicketList = ({
-  list,
-  search,
+  isListEmpty,
   emptyMessage,
-  tooltipMessage,
+  children,
 }: {
-  list: TicketWithTimestamp[];
-  search?: string;
+  isListEmpty: boolean;
   emptyMessage: string;
-  tooltipMessage?: string;
+  children?: React.ReactNode;
 }) => {
-  if (search) return <></>;
-
   return (
     <span id="ticketHistory" className="flex size-full flex-col">
-      {list.length === 0 && (
+      {isListEmpty && (
         <span className="text-muted-foreground m-auto text-center">
           {emptyMessage}
         </span>
       )}
-      {list.map((ticket) => (
-        <Ticket
-          key={ticket.id}
-          ticket={ticket}
-          tooltipMessage={tooltipMessage}
-        />
-      ))}
+      {children}
     </span>
   );
 };

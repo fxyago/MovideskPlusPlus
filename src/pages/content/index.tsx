@@ -56,7 +56,7 @@ onPageLeave(() => {
 
   const state = mppStore.getState();
 
-  const savedTickets = state.ticketHistory;
+  const savedTickets = state.history;
 
   const map = new Map<string, TicketWithTimestamp>();
 
@@ -68,18 +68,21 @@ onPageLeave(() => {
 
   if (ticketsAbertos.length === 0) return;
 
-  state.setLastSessionTickets(
-    ticketsAbertos.map((ticket) => ({
+  const timestamp = new Date().getTime();
+
+  state.setLastSession(
+    ...ticketsAbertos.map((ticket) => ({
       ...ticket,
-      timestamp: new Date().getTime(),
+      timestamp,
     }))
   );
 
   ticketsAbertos.forEach((ticket) => {
     if (!map.has(ticket.id)) {
-      state.addToHistory({ ...ticket, timestamp: new Date().getTime() });
+      state.addToHistory({ ...ticket, timestamp });
       ticketsSalvos++;
     }
   });
+
   console.log('Tickets salvos: ', ticketsSalvos);
 });

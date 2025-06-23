@@ -37,77 +37,75 @@ const createThemeSlice: StateCreator<ThemeStore> = (set, get) => ({
 });
 
 interface TicketBookmarkStore {
-  ticketsBookmarked: TicketWithTimestamp[];
+  bookmarks: TicketWithTimestamp[];
   bookmark: (ticket: TicketWithTimestamp) => void;
   unbookmark: (ticketId: string) => void;
   isBookmarked: (ticketId: string) => boolean;
-  getTicketBookmarks: () => TicketWithTimestamp[];
+  clearBookmarks: () => void;
 }
 
 const createTicketBookmarkSlice: StateCreator<TicketBookmarkStore> = (
   set,
   get
 ) => ({
-  ticketsBookmarked: [] as TicketWithTimestamp[],
-  getTicketBookmarks: () => get().ticketsBookmarked,
+  bookmarks: [] as TicketWithTimestamp[],
   bookmark: (ticket: TicketWithTimestamp) =>
     set((state) => ({
-      ticketsBookmarked: [
-        ...state.ticketsBookmarked,
-        ticket,
-      ] as TicketWithTimestamp[],
+      bookmarks: [...state.bookmarks, ticket] as TicketWithTimestamp[],
     })),
   unbookmark: (ticketId: string) =>
     set((state) => ({
-      ticketsBookmarked: state.ticketsBookmarked.filter(
+      bookmarks: state.bookmarks.filter(
         (t) => t.id !== ticketId
       ) as TicketWithTimestamp[],
     })),
-  isBookmarked: (ticketId) =>
-    get().ticketsBookmarked.some((t) => t.id === ticketId),
+  isBookmarked: (ticketId) => get().bookmarks.some((t) => t.id === ticketId),
+  clearBookmarks: () => set({ bookmarks: [] }),
 });
 
 interface TicketHistoryStore {
-  ticketHistory: TicketWithTimestamp[];
+  history: TicketWithTimestamp[];
   addToHistory: (...tickets: TicketWithTimestamp[]) => void;
-  removeFromHistory: (ticket: TicketWithTimestamp[]) => void;
+  removeFromHistory: (...tickets: TicketWithTimestamp[]) => void;
+  clearHistory: () => void;
 }
 
 const createTicketHistorySlice: StateCreator<TicketHistoryStore> = (
   set,
   get
 ) => ({
-  ticketHistory: [] as TicketWithTimestamp[],
-  getTicketHistory: () => get().ticketHistory,
+  history: [] as TicketWithTimestamp[],
+  getHistory: () => get().history,
   addToHistory: (...tickets: TicketWithTimestamp[]) =>
     set((state) => ({
-      ticketHistory: mergeAndFilter({
-        arr1: state.ticketHistory,
+      history: mergeAndFilter({
+        arr1: state.history,
         arr2: tickets,
         groupProperty: 'id',
         maxCallback: (obj) => obj.timestamp,
       }),
     })),
-  removeFromHistory: (tickets: TicketWithTimestamp[]) =>
+  removeFromHistory: (...tickets: TicketWithTimestamp[]) =>
     set((state) => ({
-      ticketHistory: state.ticketHistory.filter((t) =>
+      history: state.history.filter((t) =>
         tickets.some((t2) => t2.id === t.id)
       ) as TicketWithTimestamp[],
     })),
+  clearHistory: () => set({ history: [] }),
 });
 
 interface TicketLastSessionStore {
-  ticketsLastSession: TicketWithTimestamp[];
-  setLastSessionTickets: (...tickets: TicketWithTimestamp[]) => void;
+  lastSession: TicketWithTimestamp[];
+  setLastSession: (...tickets: TicketWithTimestamp[]) => void;
 }
 
 const createTicketLastSessionSlice: StateCreator<TicketLastSessionStore> = (
   set
 ) => ({
-  ticketsLastSession: [] as TicketWithTimestamp[],
-  setLastSessionTickets: (...tickets: TicketWithTimestamp[]) =>
+  lastSession: [] as TicketWithTimestamp[],
+  setLastSession: (...tickets: TicketWithTimestamp[]) =>
     set(() => ({
-      ticketsLastSession: tickets,
+      lastSession: tickets,
     })),
 });
 
@@ -127,7 +125,7 @@ export const mppStore = createStore<
       ...createTicketLastSessionSlice(...a),
     }),
     {
-      name: 'ticketStore',
+      name: 'MovideskPlusPlusStore',
       storage: createJSONStorage(() =>
         import.meta.env.DEV ? localStorage : ChromeLocalStorage
       ),
@@ -144,30 +142,31 @@ if (import.meta.env.DEV) {
   const exampleTickets = [
     {
       id: '0',
-      title: 'Movidesk++ Example 1',
+      title: 'Movidesk++ Example 1 teste 123 asdasd ',
       timestamp: new Date().getTime(),
+      type: 'internal',
     },
     {
       id: '1',
-      title: 'Movidesk++ Example 2',
+      title: 'Movidesk++ Example 2 teste 123',
       timestamp: new Date().getTime(),
+      type: 'public',
     },
     {
       id: '2',
-      title: 'Movidesk++ Example 3',
+      title: 'Movidesk++ Example 3 123 teste nome grande aaa bbb ccc ddd',
       timestamp: new Date().getTime(),
     },
-  ];
+  ] as TicketWithTimestamp[];
 
-  mppStore.getInitialState().setLastTab('CONFIG');
-  mppStore.getInitialState().setTheme('dark');
-  mppStore.getInitialState().setCustomTone(true);
-  mppStore.getInitialState().addToHistory(...exampleTickets);
-  mppStore.getInitialState().setLastSessionTickets(...exampleTickets);
-  exampleTickets.forEach((ticket) =>
-    mppStore.getInitialState().addToHistory(ticket)
-  );
-  exampleTickets.forEach((ticket) =>
-    mppStore.getInitialState().bookmark(ticket)
-  );
+  const state = mppStore.getState();
+
+  state.setLastTab('CONFIG');
+  state.setTheme('dark');
+  state.setCustomTone(true);
+  state.clearHistory();
+  state.addToHistory(...exampleTickets);
+  state.setLastSession(...exampleTickets);
+  state.clearBookmarks();
+  exampleTickets.forEach((ticket) => state.bookmark(ticket));
 }

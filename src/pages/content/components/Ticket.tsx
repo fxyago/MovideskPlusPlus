@@ -9,6 +9,8 @@ import {
 import { openTicket } from '@/lib/MovideskActions';
 import { cn } from '@/lib/utils';
 import { TicketWithTimestamp } from '@/types';
+import { formatDistance } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 export const Ticket = ({
   ticket,
@@ -26,21 +28,38 @@ export const Ticket = ({
           <Button
             variant="ghost"
             className={cn(
-              'border-bottom border-background/80 h-fit justify-start space-x-1 rounded-none py-4 text-left text-lg font-medium hover:brightness-125',
+              'border-bottom border-background/80 h-fit w-full justify-start space-x-1 rounded-none py-4 text-left text-lg font-medium',
               className
             )}
             onClick={() => openTicket(ticket.id)}
           >
-            <Badge variant="secondary" className="min-w-24 text-xl">
+            <Badge
+              className={cn(
+                'min-w-24 text-xl text-white!',
+                ticket.type === 'internal' && 'bg-[rgb(142,36,170)]',
+                ticket.type === 'public' && 'bg-[rgb(25,118,210)]',
+                !ticket.type && 'bg-zinc-800'
+              )}
+            >
               {ticket.id}
             </Badge>
             <span className="truncate">{ticket.title}</span>
           </Button>
         </TooltipTrigger>
-        <TooltipContent className="text-foreground bg-muted flex flex-col space-y-2 rounded-md text-lg font-medium shadow-md *:space-x-2">
+        <TooltipContent className="text-foreground bg-muted flex flex-col rounded-md text-lg font-bold shadow-md *:space-x-2">
           <div className="flex">
             <span>Ticket:</span>
             <span className="font-normal">{ticket.id}</span>
+          </div>
+          <div className="flex">
+            <span>Tipo:</span>
+            <span className="font-normal">
+              {ticket.type
+                ? ticket.type === 'internal'
+                  ? 'Interno'
+                  : 'Público'
+                : 'Não definido'}
+            </span>
           </div>
           <div className="flex">
             <span>Titulo:</span>
@@ -48,10 +67,13 @@ export const Ticket = ({
               {ticket.title}
             </span>
           </div>
-          <div className="">
+          <div>
             <span>{tooltipMessage ?? 'Salvo em:'}</span>
             <span className="font-normal">
-              {new Date(ticket.timestamp).toLocaleString()}
+              {formatDistance(new Date(ticket.timestamp), new Date(), {
+                addSuffix: true,
+                locale: ptBR,
+              })}
             </span>
           </div>
         </TooltipContent>

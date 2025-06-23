@@ -1,10 +1,13 @@
-import { Button } from "@/components/ui/button";
-import { Tone } from "@/types";
-import { useModeAnimation } from "react-theme-switch-animation";
-import { useStore } from "zustand";
-import { mppStore } from "../state";
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator';
+import { Switch } from '@/components/ui/switch';
+import { Tone } from '@/types';
+import { useModeAnimation } from 'react-theme-switch-animation';
+import { useStore } from 'zustand';
+import { mppStore } from '../state';
 
-const toneCycle: Tone[] = ["none", "blue", "red", "green", "purple"];
+const toneCycle: Tone[] = ['none', 'blue', 'red', 'green', 'purple'];
 
 const getNextTone = (currentValue: Tone): Tone => {
   const currentIndex = toneCycle.indexOf(currentValue);
@@ -18,28 +21,43 @@ const getNextTone = (currentValue: Tone): Tone => {
 export default function ToggleDarkMode() {
   const store = useStore(mppStore);
 
+  const isDarkMode = store.theme === 'dark';
+
   const { ref, toggleSwitchTheme } = useModeAnimation({
-    isDarkMode: store.theme === "dark",
+    isDarkMode,
     onDarkModeChange: (isDarkMode) =>
-      store.setTheme(isDarkMode ? "dark" : "light"),
+      store.setTheme(isDarkMode ? 'dark' : 'light'),
   });
 
   return (
-    <div className="flex flex-col items-center space-y-2 h-full">
-      <Button
-        ref={ref}
-        className="hover:bg-muted h-fit w-full !m-4"
-        onClick={toggleSwitchTheme}
-      >
-        Toggle Dark Mode
-      </Button>
-      <Button
-        className="flex-col hover:bg-muted h-fit w-full !m-4"
-        onClick={() => store.setTone(getNextTone(store.tone))}
-      >
-        <span>Cycle Dark Mode Themes</span>
-        <span>Current Theme: {store.tone}</span>
-      </Button>
+    <div className="flex flex-col rounded-lg border">
+      <span className="px-4 pt-3! pb-2 text-2xl! font-semibold!">Tema:</span>
+      <Separator />
+      <div className="m-2 flex flex-col items-start space-y-4 *:my-4">
+        <span className="flex w-full items-center justify-between px-4">
+          <Label className="m-0 align-bottom text-2xl font-normal!">
+            Dark Mode
+          </Label>
+          <Switch
+            ref={ref}
+            className="mr-3! mb-1! scale-[180%] border border-zinc-400/40!"
+            checked={isDarkMode}
+            onClick={toggleSwitchTheme}
+          />
+        </span>
+        <span className="flex w-full items-center justify-between px-4">
+          <Label className="m-0 align-bottom text-2xl font-normal!">
+            Tema: {store.tone}
+          </Label>
+          <Button
+            className="font-medium!"
+            disabled={!isDarkMode}
+            onClick={() => store.setTone(getNextTone(store.tone))}
+          >
+            Próximo Tema
+          </Button>
+        </span>
+      </div>
     </div>
   );
 }
