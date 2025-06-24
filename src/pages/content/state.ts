@@ -157,12 +157,7 @@ mppStore.subscribe((state, prevState) => {
   onToneConfigChange(state.tone, prevState.tone);
   onCustomToneChange(state.useCustomTone, prevState.useCustomTone);
 
-  if (
-    state.history.length !== prevState.history.length ||
-    state.bookmarks.length !== prevState.bookmarks.length
-  ) {
-    fixTicketsOrder(state);
-  }
+  fixTicketsOrder(state);
 });
 
 if (import.meta.env.DEV) {
