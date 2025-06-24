@@ -151,13 +151,11 @@ const fixTicketsOrder = (
   );
 };
 
-mppStore.persist.onHydrate((state) => fixTicketsOrder(state));
+mppStore.persist.onFinishHydration((state) => fixTicketsOrder(state));
 
 mppStore.subscribe((state, prevState) => {
   onToneConfigChange(state.tone, prevState.tone);
   onCustomToneChange(state.useCustomTone, prevState.useCustomTone);
-
-  fixTicketsOrder(state);
 });
 
 if (import.meta.env.DEV) {
