@@ -15,12 +15,12 @@ export default function LastSession() {
 
   return (
     <TicketList
-      isListEmpty={store.lastSession.length === 0}
+      list={store.lastSession}
       emptyMessage="Nenhum ticket salvo na última sessão"
     >
       {store.lastSession.map((ticket) => (
-        <ContextMenu>
-          <ContextMenuTrigger>
+        <ContextMenu key={ticket.id}>
+          <ContextMenuTrigger asChild>
             <Ticket
               key={ticket.id}
               ticket={ticket}

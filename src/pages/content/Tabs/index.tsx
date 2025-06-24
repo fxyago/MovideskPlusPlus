@@ -16,14 +16,17 @@ export default function MenuTabs() {
   const store = useStore(mppStore);
 
   return (
-    <Tabs className="max-w-full grow gap-2 p-2!" defaultValue={store.lastTab}>
+    <Tabs
+      className="flex max-h-[560px] max-w-full grow gap-2 p-2!"
+      defaultValue={store.lastTab}
+    >
       <TabsList className="bg-foreground/10 min-h-16 w-full shadow">
         <TabsTrigger value={BOOKMARKED}>Favoritos</TabsTrigger>
         <TabsTrigger value={LAST_SESSION}>Última Sessão</TabsTrigger>
         <TabsTrigger value={HISTORY}>Histórico</TabsTrigger>
         <TabsTrigger value={CONFIG}>Config</TabsTrigger>
       </TabsList>
-      <div className="bg-foreground/10 size-full rounded-md p-2 *:size-full">
+      <div className="bg-foreground/10 max-h-[500px] grow rounded-md p-2">
         <TabsContent value={BOOKMARKED} className="p-2">
           <Bookmarks />
         </TabsContent>

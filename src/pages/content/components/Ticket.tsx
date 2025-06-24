@@ -22,13 +22,13 @@ export const Ticket = ({
   tooltipMessage?: string;
 }) => {
   return (
-    <TooltipProvider>
+    <TooltipProvider disableHoverableContent>
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
             variant="ghost"
             className={cn(
-              'border-bottom border-background/80 h-fit w-full justify-start space-x-1 rounded-none py-4 text-left text-lg font-medium',
+              'border-bottom border-background/80 h-fit w-full justify-start space-x-1 rounded-lg py-4 text-left text-lg font-medium',
               className
             )}
             onClick={() => openTicket(ticket.id)}

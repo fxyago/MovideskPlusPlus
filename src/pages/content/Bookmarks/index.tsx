@@ -14,13 +14,10 @@ export default function Bookmarks() {
   const store = useStore(mppStore);
 
   return (
-    <TicketList
-      isListEmpty={store.bookmarks.length === 0}
-      emptyMessage="Nenhum ticket favoritado"
-    >
+    <TicketList list={store.bookmarks} emptyMessage="Nenhum ticket favoritado">
       {store.bookmarks.map((ticket) => (
-        <ContextMenu>
-          <ContextMenuTrigger>
+        <ContextMenu key={ticket.id}>
+          <ContextMenuTrigger asChild>
             <Ticket
               key={ticket.id}
               ticket={ticket}

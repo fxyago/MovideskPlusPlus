@@ -14,12 +14,9 @@ export default function History() {
   const store = useStore(mppStore);
 
   return (
-    <TicketList
-      isListEmpty={store.history.length === 0}
-      emptyMessage="Nenhum ticket no histórico"
-    >
+    <TicketList list={store.history} emptyMessage="Nenhum ticket no histórico">
       {store.history.map((ticket) => (
-        <ContextMenu>
+        <ContextMenu key={ticket.id}>
           <ContextMenuTrigger asChild>
             <Ticket
               key={ticket.id}
