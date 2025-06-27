@@ -4,6 +4,7 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from '@/components/ui/context-menu';
+import { Trash } from 'lucide-react';
 import { toast } from 'sonner';
 import { useStore } from 'zustand';
 import { Ticket } from '../components/Ticket';
@@ -17,7 +18,7 @@ export default function History() {
     <TicketList list={store.history} emptyMessage="Nenhum ticket no histórico">
       {store.history.map((ticket) => (
         <ContextMenu key={ticket.id}>
-          <ContextMenuTrigger asChild>
+          <ContextMenuTrigger>
             <Ticket
               key={ticket.id}
               ticket={ticket}
@@ -27,12 +28,13 @@ export default function History() {
           <ContextMenuContent>
             <ContextMenuItem
               variant="destructive"
+              className="p-2! text-xl font-semibold"
               onClick={() => {
                 store.removeFromHistory(ticket);
                 toast.success(`Ticket ${ticket.id} removido do histórico!`);
               }}
             >
-              Remover
+              <Trash className="size-6" /> Remover
             </ContextMenuItem>
           </ContextMenuContent>
         </ContextMenu>

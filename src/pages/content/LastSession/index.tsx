@@ -4,6 +4,7 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from '@/components/ui/context-menu';
+import { Trash } from 'lucide-react';
 import { toast } from 'sonner';
 import { useStore } from 'zustand';
 import { Ticket } from '../components/Ticket';
@@ -20,7 +21,7 @@ export default function LastSession() {
     >
       {store.lastSession.map((ticket) => (
         <ContextMenu key={ticket.id}>
-          <ContextMenuTrigger asChild>
+          <ContextMenuTrigger>
             <Ticket
               key={ticket.id}
               ticket={ticket}
@@ -30,6 +31,7 @@ export default function LastSession() {
           <ContextMenuContent>
             <ContextMenuItem
               variant="destructive"
+              className="p-2! text-xl font-semibold"
               onClick={() => {
                 store.setLastSession(
                   ...store.lastSession.filter((t) => t.id !== ticket.id)
@@ -39,7 +41,7 @@ export default function LastSession() {
                 );
               }}
             >
-              Remover da lista
+              <Trash className="size-6" /> Remover da lista
             </ContextMenuItem>
           </ContextMenuContent>
         </ContextMenu>

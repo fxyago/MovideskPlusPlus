@@ -4,6 +4,7 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from '@/components/ui/context-menu';
+import { BookmarkMinus } from 'lucide-react';
 import { toast } from 'sonner';
 import { useStore } from 'zustand';
 import { Ticket } from '../components/Ticket';
@@ -17,7 +18,7 @@ export default function Bookmarks() {
     <TicketList list={store.bookmarks} emptyMessage="Nenhum ticket favoritado">
       {store.bookmarks.map((ticket) => (
         <ContextMenu key={ticket.id}>
-          <ContextMenuTrigger asChild>
+          <ContextMenuTrigger>
             <Ticket
               key={ticket.id}
               ticket={ticket}
@@ -27,11 +28,13 @@ export default function Bookmarks() {
           <ContextMenuContent>
             <ContextMenuItem
               variant="destructive"
+              className="p-2! text-xl font-semibold"
               onClick={() => {
                 store.unbookmark(ticket.id);
                 toast.success(`Ticket ${ticket.id} removido dos favoritos!`);
               }}
             >
+              <BookmarkMinus className="size-6" />
               Desfavoritar
             </ContextMenuItem>
           </ContextMenuContent>

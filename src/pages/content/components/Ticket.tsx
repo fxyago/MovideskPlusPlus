@@ -22,8 +22,8 @@ export const Ticket = ({
   tooltipMessage?: string;
 }) => {
   return (
-    <TooltipProvider disableHoverableContent>
-      <Tooltip>
+    <TooltipProvider>
+      <Tooltip delayDuration={900} disableHoverableContent>
         <TooltipTrigger asChild>
           <Button
             variant="ghost"
