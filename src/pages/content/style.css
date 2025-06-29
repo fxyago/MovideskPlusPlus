@@ -126,54 +126,41 @@
   --sidebar-ring: oklch(0.552 0.016 285.938);
 
   /** Base and Text colors */
-  --dark-a0: #000000;
-  --dark-a10: #121212;
-  --dark-a20: #1e1e1e;
-  --dark-a30: #2a2a2a;
-  --dark-a40: #363636;
-  --dark-a50: #4e4e4e;
-
-  --text-a0: #ffffff;
-  --text-a10: #f2f2f2;
-  --text-a20: #e6e6e6;
-  --text-a30: #cccccc;
-  --text-a40: #b3b3b3;
-  --text-a50: #999999;
+  --mpp-text-primary: #e6e6e6;
+  --mpp-text-secondary: #cccccc;
+  --mpp-text-tertiary: #b3b3b3;
 
   /** DARK Theme surface colors */
-  --surface-a0: #0f0f0f;
-  --surface-a10: #262626;
-  --surface-a20: #3d3d3d;
-  --surface-a30: #555555;
-  --surface-a40: #6f6f6f;
-  --surface-a50: #8a8a8a;
+  --mpp-primary: #262626;
+  --mpp-secondary: #3d3d3d;
+  --mpp-tertiary: #555555;
 
   /* Movidesk Geral */
 
   body {
-    background-color: var(--surface-a10) !important;
+    background-color: var(--mpp-primary) !important;
   }
 
   * {
-    scrollbar-color: var(--surface-a50) var(--surface-a10) !important;
+    scrollbar-color: var(--mpp-tertiary) var(--mpp-primary) !important;
   }
 
   form > button {
-    background-color: var(--surface-a20) !important;
-    color: var(--text-a30) !important;
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-secondary) !important;
 
     &:hover {
-      background-color: var(--surface-a30) !important;
+      background-color: var(--mpp-tertiary) !important;
     }
   }
 
   #main-container {
     padding: 0px !important;
-    background-color: var(--surface-a10);
+    background-color: var(--mpp-primary);
   }
 
   #ticket-sidebar {
-    background-color: var(--surface-a10);
+    background-color: var(--mpp-primary);
   }
 
   .bar-tab-color-preview {
@@ -183,114 +170,114 @@
 
   .tab-ticket-container,
   .tab-pane.active {
-    background-color: var(--surface-a10);
+    background-color: var(--mpp-primary);
   }
 
   .configuration-item-container {
     .title,
     span {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
 
     .open-in-tab {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
 
       &:hover {
-        background-color: var(--surface-a30) !important;
+        background-color: var(--mpp-tertiary) !important;
       }
     }
   }
 
   .configuration-summary {
-    background-color: var(--surface-a20) !important;
+    background-color: var(--mpp-secondary) !important;
 
     .panel-heading {
       span,
       .panel-title {
-        color: var(--text-a30) !important;
+        color: var(--mpp-text-secondary) !important;
       }
     }
 
     .row > div > a {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
 
     dl {
       dt,
       dd {
-        color: var(--text-a30) !important;
+        color: var(--mpp-text-secondary) !important;
       }
     }
 
     ul {
       div,
       strong {
-        color: var(--text-a30) !important;
+        color: var(--mpp-text-secondary) !important;
       }
     }
 
     .line-division {
-      background-color: var(--surface-a30) !important;
+      background-color: var(--mpp-tertiary) !important;
     }
   }
 
   .search-buttons-container {
     button {
-      background-color: var(--surface-a20) !important;
-      color: var(--text-a30) !important;
+      background-color: var(--mpp-secondary) !important;
+      color: var(--mpp-text-secondary) !important;
 
       &:hover {
-        background-color: var(--surface-a30) !important;
+        background-color: var(--mpp-tertiary) !important;
       }
 
       &.active {
-        background-color: var(--surface-a30) !important;
+        background-color: var(--mpp-tertiary) !important;
       }
     }
   }
 
   .agents-box-container {
     div > div {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
   }
 
   .action-item-menu {
     div,
     a {
-      background-color: var(--surface-a20) !important;
+      background-color: var(--mpp-secondary) !important;
 
       span {
-        color: var(--text-a30) !important;
+        color: var(--mpp-text-secondary) !important;
       }
     }
 
     &:hover {
-      background-color: var(--surface-a30) !important;
+      background-color: var(--mpp-tertiary) !important;
     }
   }
 
   .add-panel {
-    background-color: var(--surface-a20) !important;
+    background-color: var(--mpp-secondary) !important;
 
-    color: var(--text-a30) !important;
+    color: var(--mpp-text-secondary) !important;
 
     &:hover {
-      background-color: var(--surface-a30) !important;
+      background-color: var(--mpp-tertiary) !important;
     }
   }
 
   .confirm {
-    background-color: var(--surface-a20) !important;
-    color: var(--text-a30) !important;
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-secondary) !important;
 
     .buttons-container {
       button[data-value='no'] {
-        background-color: var(--surface-a30) !important;
-        color: var(--text-a30) !important;
+        background-color: var(--mpp-tertiary) !important;
+        color: var(--mpp-text-secondary) !important;
 
         &:hover {
-          background-color: var(--surface-a40) !important;
+          background-color: var(--mpp-tertiary) !important;
         }
       }
 
@@ -305,110 +292,110 @@
   }
 
   .panel-item {
-    background-color: var(--surface-a10) !important;
+    background-color: var(--mpp-primary) !important;
 
     a:not(.select-item-disabled) {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
 
     &.active {
       a {
-        background-color: var(--surface-a20) !important;
+        background-color: var(--mpp-secondary) !important;
       }
     }
 
     &:hover {
-      background-color: var(--surface-a30) !important;
+      background-color: var(--mpp-tertiary) !important;
     }
   }
 
   .btn-options-toolbox {
-    background-color: var(--surface-a20) !important;
+    background-color: var(--mpp-secondary) !important;
 
     span {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
   }
 
   .tr-data.parent:hover {
-    background-color: var(--surface-a30) !important;
+    background-color: var(--mpp-tertiary) !important;
   }
 
   .pull-right {
-    background-color: var(--surface-a10) !important;
-    color: var(--text-a30) !important;
+    background-color: var(--mpp-primary) !important;
+    color: var(--mpp-text-secondary) !important;
 
     padding-left: 10px;
     padding-right: 6px;
   }
 
   .action-item-menu {
-    color: var(--text-a30) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   #tabs-nav li:hover .close {
-    color: var(--text-a30);
+    color: var(--mpp-text-secondary);
   }
 
   .view-ticket {
     a {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
 
     &:hover {
-      background-color: var(--surface-a30) !important;
+      background-color: var(--mpp-tertiary) !important;
     }
   }
 
   .change-visualizations {
-    color: var(--text-a30) !important;
+    color: var(--mpp-text-secondary) !important;
 
     &:hover {
-      background-color: var(--surface-a30) !important;
+      background-color: var(--mpp-tertiary) !important;
     }
   }
 
   em {
-    background-color: var(--surface-a30) !important;
+    background-color: var(--mpp-tertiary) !important;
   }
 
   .title-panel {
-    color: var(--text-a30) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .personal-view-title {
-    color: var(--text-a20) !important;
+    color: var(--mpp-text-primary) !important;
   }
 
   .personal-visualizations-container > ul > li {
-    background-color: var(--surface-a10) !important;
+    background-color: var(--mpp-primary) !important;
 
     a {
-      color: var(--text-a30) !important;
-      background-color: var(--surface-a10) !important;
+      color: var(--mpp-text-secondary) !important;
+      background-color: var(--mpp-primary) !important;
     }
 
     &:hover {
-      background-color: var(--surface-a10) !important;
+      background-color: var(--mpp-primary) !important;
     }
   }
 
   .toggle-sidebar {
-    background-color: var(--surface-a20) !important;
-    color: var(--text-a30) !important;
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-secondary) !important;
 
     &:hover {
-      background-color: var(--surface-a30) !important;
+      background-color: var(--mpp-tertiary) !important;
     }
   }
 
   .tab-li:not(.active) {
-    background-color: var(--surface-a20) !important;
-    color: var(--text-a50) !important;
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-tertiary) !important;
 
     a,
     .tab-icon {
-      color: var(--text-a50) !important;
+      color: var(--mpp-text-tertiary) !important;
     }
   }
 
@@ -417,41 +404,46 @@
   }
 
   .nav-stacked.message-preview-type {
-    background-color: var(--surface-a10) !important;
+    background-color: var(--mpp-primary) !important;
   }
 
   .modal-content {
-    background-color: var(--surface-a10) !important;
+    background-color: var(--mpp-primary) !important;
 
     .modal-title {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
   }
 
   .ui-datepicker {
     .ui-datepicker-title select {
-      color: var(--text-a20) !important;
+      color: var(--mpp-text-primary) !important;
 
       option {
-        background-color: var(--surface-a20) !important;
-        color: var(--text-a20) !important;
+        background-color: var(--mpp-secondary) !important;
+        color: var(--mpp-text-primary) !important;
 
         &:hover {
-          background-color: var(--surface-a30) !important;
+          background-color: var(--mpp-tertiary) !important;
         }
       }
     }
 
     .ui-datepicker-calendar {
       thead > tr > th > span {
-        color: var(--text-a30) !important;
+        color: var(--mpp-text-secondary) !important;
       }
 
       .ui-state-default {
-        color: var(--text-a30);
+        color: var(--mpp-text-secondary);
 
-        &.ui-state-hightext {
-          background-color: var(--surface-a40);
+        &.ui-state-hightext,
+        &.ui-state-active {
+          background-color: var(--mpp-tertiary);
+        }
+
+        &.ui-state-highlight {
+          background-color: var(--mpp-primary);
         }
       }
     }
@@ -460,52 +452,52 @@
   .panel-body {
     h2,
     p {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
   }
 
   .introduction-hello-line {
     span,
     strong {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
   }
 
   .row-top-icons {
     i,
     div {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
   }
 
   .home-panel div:nth-of-type(2) {
-    color: var(--text-a30) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .form-toolbox {
-    border-top-color: var(--surface-a30) !important;
-    background-color: var(--surface-a20) !important;
+    border-top-color: var(--mpp-tertiary) !important;
+    background-color: var(--mpp-secondary) !important;
   }
 
   .message-menu {
-    background-color: var(--surface-a10) !important;
+    background-color: var(--mpp-primary) !important;
 
     .folder-container:hover {
-      color: var(--text-a30) !important;
-      background-color: var(--surface-a30) !important;
+      color: var(--mpp-text-secondary) !important;
+      background-color: var(--mpp-tertiary) !important;
     }
 
     .nav-stacked > li {
       a {
-        color: var(--text-a30) !important;
+        color: var(--mpp-text-secondary) !important;
       }
 
       &.active {
-        background-color: var(--surface-a20) !important;
+        background-color: var(--mpp-secondary) !important;
       }
 
       &:hover {
-        background-color: var(--surface-a30) !important;
+        background-color: var(--mpp-tertiary) !important;
       }
     }
   }
@@ -518,70 +510,76 @@
   .ticket-content,
   .ticket-subject,
   .label-radio-group {
-    color: var(--text-a30) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .ticket-type-label,
   .container-text-editor,
   .tabs-wrapper,
   .navbar {
-    background-color: var(--surface-a10) !important;
-    color: var(--text-a30) !important;
+    background-color: var(--mpp-primary) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .fr-command:not(.fr-active) {
     svg > path {
-      fill: var(--text-a30);
+      fill: var(--mpp-text-secondary);
     }
   }
 
   .fr-command.fr-active {
-    background-color: var(--surface-a20);
+    background-color: var(--mpp-secondary);
   }
 
   .fr-toolbar,
   .fr-wrapper {
-    background-color: var(--surface-a10) !important;
-    color: var(--text-a30) !important;
-    border-color: var(--surface-a20) !important;
+    background-color: var(--mpp-primary) !important;
+    color: var(--mpp-text-secondary) !important;
+    border-color: var(--mpp-secondary) !important;
 
     .fr-element.fr-view {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
   }
 
   .fr-second-toolbar {
-    background-color: var(--surface-a10) !important;
-    color: var(--text-a30) !important;
-    border-color: var(--surface-a20) !important;
+    background-color: var(--mpp-primary) !important;
+    color: var(--mpp-text-secondary) !important;
+    border-color: var(--mpp-secondary) !important;
     border-radius: 0px !important;
   }
 
   .container-text-editor > .fr-box {
-    border-color: var(--surface-a20);
+    border-color: var(--mpp-secondary);
   }
 
   .ticket-description-container,
   .fr-newline,
   .line-division {
-    background-color: var(--surface-a20) !important;
+    background-color: var(--mpp-secondary) !important;
+  }
+
+  .action-item-content {
+    & > div {
+      color: var(--mpp-text-secondary) !important;
+    }
   }
 
   .action-item-content-container,
   .history-item-content,
   .info-alert-container,
   #button-more-icon-container {
-    background-color: var(--surface-a20) !important;
-    color: var(--text-a30) !important;
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .btn-import,
   .action-buttons-square {
-    background-color: var(--surface-a20) !important;
-    color: var(--text-a30) !important;
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-secondary) !important;
 
     &:hover {
-      background-color: var(--surface-a30) !important;
+      background-color: var(--mpp-tertiary) !important;
     }
   }
 
@@ -589,23 +587,29 @@
   .history-item-owner,
   .tr-toolbar,
   .form-toolbox {
-    border-color: var(--surface-a30) !important;
+    border-color: var(--mpp-tertiary) !important;
   }
 
   .jqx-popup.jqx-fill-state-focus {
-    background-color: var(--surface-a20) !important;
-    border-color: var(--surface-a30) !important;
+    background-color: var(--mpp-secondary) !important;
+    border-color: var(--mpp-tertiary) !important;
   }
 
-  .jqx-widget {
-    background-color: var(--surface-a20) !important;
-    color: var(--text-a30) !important;
+  .jqx-widget,
+  .jqx-widget-content {
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-secondary) !important;
+  }
+
+  .jqx-fill-state-hover,
+  .jqx-tree-item-hover {
+    background-color: var(--mpp-tertiary) !important;
   }
 
   .jqx-input,
   .jqx-action-button {
-    background-color: var(--surface-a20) !important;
-    border-color: var(--surface-a30) !important;
+    background-color: var(--mpp-secondary) !important;
+    border-color: var(--mpp-tertiary) !important;
   }
 
   #ticket-action-type-select > label {
@@ -615,33 +619,33 @@
 
   .jqx-action-button,
   .jqx-input-content:disabled {
-    background-color: var(--surface-a20) !important;
-    color: var(--text-a40) !important;
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-tertiary) !important;
   }
 
   .jqx-input-content:not(:disabled) {
-    background-color: var(--surface-a10) !important;
-    color: var(--text-a30) !important;
+    background-color: var(--mpp-primary) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .ui-datepicker {
-    background-color: var(--surface-a20) !important;
+    background-color: var(--mpp-secondary) !important;
 
     .ui-datepicker-header {
-      background-color: var(--surface-a20) !important;
+      background-color: var(--mpp-secondary) !important;
     }
   }
 
   .icon-mv-clock,
   .time-appointment-operations > a,
   .appointments-header > div {
-    color: var(--text-a30) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .ticket-breadcrumb > li {
     a,
     span {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
   }
 
@@ -651,51 +655,78 @@
 
   .loading-indicator,
   .container-loading {
-    background-color: var(--surface-a30);
-    border-color: var(--surface-a30);
-    color: var(--text-a30);
+    background-color: var(--mpp-tertiary);
+    border-color: var(--mpp-tertiary);
+    color: var(--mpp-text-secondary);
   }
 
   .navbar-item > a {
-    color: var(--text-a30) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .info-item-container,
   .config-item-title,
   .title-section-config-content,
   .subtitle-section-config-content {
-    color: var(--text-a30) !important;
+    color: var(--mpp-text-secondary) !important;
   }
+
+  .working-time-agreement {
+    background-color: var(--mpp-secondary) !important;
+
+    div {
+      color: var(--mpp-text-secondary) !important;
+    }
+  }
+
+  .movidesk-modal {
+    background-color: var(--mpp-primary) !important;
+    color: var(--mpp-text-secondary) !important;
+
+    .table-movidesk-title {
+      background-color: var(--mpp-secondary) !important;
+    }
+  }
+
+  .btn-mv-gray-default {
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-secondary) !important;
+
+    &:hover {
+      background-color: var(--mpp-tertiary) !important;
+    }
+  }
+
   /* Movidesk Geral */
 
   /* Movidesk Popover */
   .popover {
-    background-color: var(--surface-a30) !important;
-    border-color: var(--surface-a40) !important;
+    background-color: var(--mpp-tertiary) !important;
+    border-color: var(--mpp-tertiary) !important;
 
     .popover-content {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
 
     .arrow {
       &.top {
-        border-top-color: var(--surface-a40);
+        border-top-color: var(--mpp-tertiary);
       }
 
       &.bottom {
-        border-bottom-color: var(--surface-a40);
+        border-bottom-color: var(--mpp-tertiary);
       }
     }
 
     &.top {
       .arrow::after {
-        border-top-color: var(--surface-a30) !important;
+        border-top-color: var(--mpp-tertiary) !important;
       }
     }
 
     &.bottom {
       .arrow::after {
-        border-bottom-color: var(--surface-a30) !important;
+        border-bottom-color: var(--mpp-tertiary) !important;
       }
     }
   }
@@ -704,101 +735,122 @@
   /* Movidesk Select2 */
   .select2-container,
   .select2-container-disabled {
-    background-color: var(--surface-a20) !important;
-    border-color: var(--surface-a40) !important;
+    background-color: var(--mpp-secondary) !important;
+    border-color: var(--mpp-tertiary) !important;
 
     .select2-choice {
-      background-color: var(--surface-a20) !important;
+      background-color: var(--mpp-secondary) !important;
     }
 
     .select2-chosen {
-      background-color: var(--surface-a20) !important;
-      color: var(--text-a10) !important;
+      background-color: var(--mpp-secondary) !important;
+      color: var(--mpp-text-primary) !important;
     }
   }
 
   .select2-container.ticket-select-status {
-    background-color: var(--surface-a30) !important;
-    border-color: var(--surface-a50) !important;
+    background-color: var(--mpp-tertiary) !important;
+    border-color: var(--mpp-tertiary) !important;
 
     .select2-choice {
-      background-color: var(--surface-a30) !important;
+      background-color: var(--mpp-tertiary) !important;
     }
 
     .select2-chosen {
-      background-color: var(--surface-a30) !important;
-      color: var(--text-a10) !important;
+      background-color: var(--mpp-tertiary) !important;
+      color: var(--mpp-text-primary) !important;
     }
   }
 
   .select2-container.select2-container-multi {
-    background-color: var(--surface-a20) !important;
-    border-color: var(--surface-a50) !important;
+    background-color: var(--mpp-secondary) !important;
+    border-color: var(--mpp-tertiary) !important;
 
     .select2-choices {
-      background-color: var(--surface-a20) !important;
-      color: var(--text-a10) !important;
+      background-color: var(--mpp-secondary) !important;
+      color: var(--mpp-text-primary) !important;
     }
   }
 
   .ticket-status-container {
-    background-color: var(--surface-a10) !important;
+    background-color: var(--mpp-primary) !important;
   }
 
   .select2-drop {
-    background-color: var(--surface-a20) !important;
+    background-color: var(--mpp-secondary) !important;
 
     input {
-      background-color: var(--surface-a10) !important;
+      background-color: var(--mpp-primary) !important;
     }
   }
 
   .select2-search {
     height: auto !important;
     padding-top: 3px !important;
-    border-color: var(--surface-a20) !important;
+    border-color: var(--mpp-secondary) !important;
   }
 
   .select2-input {
-    color: var(--text-a10) !important;
+    color: var(--mpp-text-primary) !important;
+  }
+
+  .md-select-treeview-search {
+    background-image: none !important;
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-secondary) !important;
+
+    &::placeholder {
+      color: var(--mpp-text-tertiary) !important;
+    }
+  }
+
+  .md-select-client-name {
+    color: var(--mpp-text-secondary) !important;
   }
 
   .md-select-justificationx,
   .md-select-item-idented {
-    color: var(--text-a30) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .select2-results {
-    background-color: var(--surface-a10) !important;
+    background-color: var(--mpp-primary) !important;
   }
 
   .select2-result-unselectable {
-    background-color: var(--surface-a20) !important;
+    background-color: var(--mpp-secondary) !important;
 
     .select2-result-label,
     .select2-result-label > span {
-      background-color: var(--surface-a20) !important;
-      color: var(--text-a30) !important;
+      background-color: var(--mpp-secondary) !important;
+      color: var(--mpp-text-secondary) !important;
     }
   }
 
   .select2-result-selectable {
-    background-color: var(--surface-a10) !important;
+    background-color: var(--mpp-primary) !important;
 
     .select2-result-label,
     .select2-result-label > span {
-      background-color: var(--surface-a10) !important;
-      color: var(--text-a50) !important;
+      background-color: var(--mpp-primary) !important;
+      color: var(--mpp-text-tertiary) !important;
+
+      &:hover {
+        background-color: var(--mpp-tertiary) !important;
+      }
     }
   }
 
-  .select2-result-selectable.select2-hightexted {
-    background-color: var(--surface-a30) !important;
+  .select2-result-selectable {
+    &.select2-highlighted,
+    &.select2-hightexted {
+      background-color: var(--mpp-tertiary) !important;
 
-    .select2-result-label,
-    .select2-result-label > span {
-      background-color: var(--surface-a30) !important;
-      color: var(--text-a30) !important;
+      .select2-result-label,
+      .select2-result-label > span {
+        background-color: var(--mpp-tertiary) !important;
+        color: var(--mpp-text-secondary) !important;
+      }
     }
   }
   /* Movidesk Select2 */
@@ -810,51 +862,51 @@
 
   .slick-row:hover {
     .slick-cell {
-      background-color: var(--surface-a30) !important;
+      background-color: var(--mpp-tertiary) !important;
     }
   }
 
   .slick-cell {
     border-left: 0px !important;
     border-right: 0px !important;
-    border-top-color: var(--surface-a30) !important;
-    background-color: var(--surface-a20) !important;
-    color: var(--text-a30) !important;
+    border-top-color: var(--mpp-tertiary) !important;
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-secondary) !important;
 
     .inactive {
-      color: var(--text-a50) !important;
+      color: var(--mpp-text-tertiary) !important;
     }
   }
 
   .slick-header {
-    background-color: var(--surface-a10) !important;
+    background-color: var(--mpp-primary) !important;
   }
 
   .slick-column-name {
-    color: var(--text-a10) !important;
+    color: var(--mpp-text-primary) !important;
   }
 
   .slick-sort-indicator {
-    background-color: var(--surface-a20) !important;
-    color: var(--text-a20) !important;
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-primary) !important;
   }
   /* Movidesk SlickGrid */
 
   /* Movidesk Dropdown */
   .dropdown-menu {
-    background-color: var(--surface-a20) !important;
-    color: var(--text-a10) !important;
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-primary) !important;
 
     li {
-      background-color: var(--surface-a20) !important;
+      background-color: var(--mpp-secondary) !important;
 
       span,
       a {
-        color: var(--text-a10) !important;
+        color: var(--mpp-text-primary) !important;
 
         span,
         div {
-          color: var(--text-a10) !important;
+          color: var(--mpp-text-primary) !important;
         }
 
         &:hover {
@@ -864,73 +916,81 @@
       }
 
       &.dropdown-header {
-        color: var(--text-a30) !important;
+        color: var(--mpp-text-secondary) !important;
       }
 
       &:not(.dropdown-header):hover {
-        background-color: var(--surface-a30) !important;
-        color: var(--text-a20) !important;
+        background-color: var(--mpp-tertiary) !important;
+        color: var(--mpp-text-primary) !important;
       }
     }
   }
 
   .divider {
-    background-color: var(--surface-a30) !important;
+    background-color: var(--mpp-tertiary) !important;
   }
 
   #goto-ticket {
-    color: var(--text-a30) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .dropdown-menu-movidesk,
   .list-search-result-container {
-    background-color: var(--surface-a10) !important;
-    color: var(--text-a30) !important;
-    border-color: var(--surface-a20) !important;
+    background-color: var(--mpp-primary) !important;
+    color: var(--mpp-text-secondary) !important;
+    border-color: var(--mpp-secondary) !important;
 
     & > a {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
 
       &:hover {
-        background-color: var(--surface-a20) !important;
+        background-color: var(--mpp-secondary) !important;
       }
     }
 
     &.dropdown-header,
     .dropdown-header {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
   }
 
   .dropdown-dad-movidesk::before {
-    border-bottom-color: var(--surface-a20) !important;
+    border-bottom-color: var(--mpp-secondary) !important;
     transform: translateX(48%) !important;
     border-width: 12px !important;
     left: -3px !important;
   }
 
   .dropdown-dad-movidesk::after {
-    border-bottom-color: var(--surface-a10) !important;
+    border-bottom-color: var(--mpp-primary) !important;
     transform: translateX(48%) !important;
     border-width: 10px !important;
     left: 1px !important;
   }
 
   .top-user-item-search::before {
-    border-bottom-color: var(--surface-a20) !important;
+    border-bottom-color: var(--mpp-secondary) !important;
     border-width: 12px !important;
     bottom: 1px !important;
     transform: translateX(-25%) !important;
   }
 
   .top-user-item-search::after {
-    border-bottom-color: var(--surface-a10) !important;
+    border-bottom-color: var(--mpp-primary) !important;
     border-width: 12px !important;
     transform: translateX(-25%) !important;
   }
 
+  .dropdown-item-link-movidesk {
+    &,
+    a {
+      color: var(--mpp-text-primary) !important;
+    }
+  }
+
   .dropdown-item-link-movidesk:hover {
-    background-color: var(--surface-a20) !important;
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-primary) !important;
   }
 
   /* Movidesk Dropdown */
@@ -939,41 +999,47 @@
 
   .input-mv-new,
   .md-select-treeview-dropdown-field {
-    background-color: var(--surface-a20) !important;
-    border-color: var(--surface-a40) !important;
-    color: var(--text-a30) !important;
+    background-color: var(--mpp-secondary) !important;
+    border-color: var(--mpp-tertiary) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .input-mv-new:hover {
-    border-color: var(--surface-a50) !important;
+    border-color: var(--mpp-tertiary) !important;
   }
 
   .lbl-input-text,
   .info-item-container-custom-field {
-    color: var(--text-a30);
+    color: var(--mpp-text-secondary);
+  }
+
+  .md-select-treeview-dropdown-container {
+    background-color: var(--mpp-secondary) !important;
+    border-color: var(--mpp-tertiary) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .md-select-item {
-    background-color: var(--surface-a20) !important;
+    background-color: var(--mpp-secondary) !important;
 
     .md-select-item-name {
-      color: var(--text-a10) !important;
+      color: var(--mpp-text-primary) !important;
       background-color: transparent !important;
 
       & > * {
-        color: var(--text-a10) !important;
+        color: var(--mpp-text-primary) !important;
         background-color: transparent !important;
       }
     }
 
     &:hover {
-      background-color: var(--surface-a30) !important;
+      background-color: var(--mpp-tertiary) !important;
     }
   }
 
   .action-item-menu {
-    background-color: var(--surface-a20) !important;
-    border-color: var(--surface-a30) !important;
+    background-color: var(--mpp-secondary) !important;
+    border-color: var(--mpp-tertiary) !important;
   }
 
   .btn-options-toolbox {
@@ -983,53 +1049,53 @@
   }
 
   .toolbox-title-container {
-    background-color: var(--surface-a10) !important;
-    color: var(--text-a30) !important;
+    background-color: var(--mpp-primary) !important;
+    color: var(--mpp-text-secondary) !important;
 
     & > div > div {
-      color: var(--text-a30) !important;
+      color: var(--mpp-text-secondary) !important;
     }
   }
 
   .text-helper-panel {
-    background-color: var(--surface-a10) !important;
-    color: var(--text-a30) !important;
+    background-color: var(--mpp-primary) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .row.font-16-bold,
   .other-text-container {
-    color: var(--text-a30) !important;
+    color: var(--mpp-text-secondary) !important;
   }
 
   .container-fluid {
-    span,
-    a {
-      color: var(--text-a30) !important;
+    span:not(table p span),
+    a:not(table p a) {
+      color: var(--mpp-text-secondary) !important;
     }
   }
 
   .search-container,
   .search-field-container {
-    border-color: var(--surface-a20) !important;
+    border-color: var(--mpp-secondary) !important;
 
     input {
-      background-color: var(--surface-a20) !important;
-      color: var(--text-a30) !important;
+      background-color: var(--mpp-secondary) !important;
+      color: var(--mpp-text-secondary) !important;
 
       &::placeholder {
-        color: var(--text-a50) !important;
+        color: var(--mpp-text-tertiary) !important;
       }
     }
   }
 
   .go-straight-to-ticket-subcontainer {
-    background-color: var(--surface-a20) !important;
+    background-color: var(--mpp-secondary) !important;
     input {
-      background-color: var(--surface-a20) !important;
-      color: var(--text-a30) !important;
+      background-color: var(--mpp-secondary) !important;
+      color: var(--mpp-text-secondary) !important;
 
       &::placeholder {
-        color: var(--text-a50) !important;
+        color: var(--mpp-text-tertiary) !important;
       }
     }
   }
@@ -1042,18 +1108,18 @@
     sla-solution-date {
       button,
       a {
-        color: var(--text-a10) !important;
+        color: var(--mpp-text-primary) !important;
         background-color: inherit !important;
       }
 
       > span:first-of-type {
-        background-color: var(--surface-a20) !important;
-        border-color: var(--surface-a40) !important;
-        color: var(--text-a10) !important;
+        background-color: var(--mpp-secondary) !important;
+        border-color: var(--mpp-tertiary) !important;
+        color: var(--mpp-text-primary) !important;
       }
 
       > span:first-of-type:hover {
-        border-color: var(--surface-a50) !important;
+        border-color: var(--mpp-tertiary) !important;
       }
     }
   }
@@ -1080,6 +1146,18 @@
     border-left: none !important;
     margin-top: 1px !important;
   }
+
+  /* Fix para emails da NSTech */
+  .message-content > div {
+    &,
+    & > div {
+      color: var(--mpp-text-secondary) !important;
+    }
+
+    & table {
+      color: black !important;
+    }
+  }
   /* Movidesk Misc. */
 }
 
@@ -1088,39 +1166,27 @@
 }
 
 .tone-blue {
-  --surface-a0: #161920 !important;
-  --surface-a10: #2b2e35 !important;
-  --surface-a20: #42444b !important;
-  --surface-a30: #5a5c62 !important;
-  --surface-a40: #73757a !important;
-  --surface-a50: #8e8f93 !important;
+  --mpp-primary: #2b2e35 !important;
+  --mpp-secondary: #42444b !important;
+  --mpp-tertiary: #5a5c62 !important;
 }
 
 .tone-red {
-  --surface-a0: #281916 !important;
-  --surface-a10: #3d2e2b !important;
-  --surface-a20: #534542 !important;
-  --surface-a30: #695d5a !important;
-  --surface-a40: #817573 !important;
-  --surface-a50: #998f8d !important;
+  --mpp-primary: #3d2e2b !important;
+  --mpp-secondary: #534542 !important;
+  --mpp-tertiary: #695d5a !important;
 }
 
 .tone-green {
-  --surface-a0: #182015 !important;
-  --surface-a10: #2d352a !important;
-  --surface-a20: #444b41 !important;
-  --surface-a30: #5c6259 !important;
-  --surface-a40: #757a73 !important;
-  --surface-a50: #8f938d !important;
+  --mpp-primary: #2d352a !important;
+  --mpp-secondary: #444b41 !important;
+  --mpp-tertiary: #5c6259 !important;
 }
 
 .tone-purple {
-  --surface-a0: #1d151b !important;
-  --surface-a10: #322a30 !important;
-  --surface-a20: #484146 !important;
-  --surface-a30: #60595e !important;
-  --surface-a40: #787277 !important;
-  --surface-a50: #928d90 !important;
+  --mpp-primary: #322a30 !important;
+  --mpp-secondary: #484146 !important;
+  --mpp-tertiary: #60595e !important;
 }
 
 .loader3 {
@@ -1199,7 +1265,4 @@
   menu {
     list-style: revert;
   }
-}
-
-@layer components {
 }

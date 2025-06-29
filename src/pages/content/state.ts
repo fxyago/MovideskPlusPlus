@@ -53,7 +53,9 @@ const createTicketBookmarkSlice: StateCreator<TicketBookmarkStore> = (
   setBookmarks: (bookmarks: TicketWithTimestamp[]) => set({ bookmarks }),
   bookmark: (ticket: TicketWithTimestamp) =>
     set((state) => ({
-      bookmarks: [...state.bookmarks, ticket] as TicketWithTimestamp[],
+      bookmarks: [ticket, ...state.bookmarks].toSorted(
+        (a, b) => b.timestamp - a.timestamp
+      ) as TicketWithTimestamp[],
     })),
   unbookmark: (ticketId: string) =>
     set((state) => ({
@@ -86,7 +88,7 @@ const createTicketHistorySlice: StateCreator<TicketHistoryStore> = (
         arr2: tickets,
         groupProperty: 'id',
         maxCallback: (obj) => obj.timestamp,
-      }),
+      }).toSorted((a, b) => b.timestamp - a.timestamp),
     })),
   removeFromHistory: (...tickets: TicketWithTimestamp[]) =>
     set((state) => ({
@@ -108,7 +110,7 @@ const createTicketLastSessionSlice: StateCreator<TicketLastSessionStore> = (
   lastSession: [] as TicketWithTimestamp[],
   setLastSession: (...tickets: TicketWithTimestamp[]) =>
     set(() => ({
-      lastSession: tickets,
+      lastSession: tickets.toSorted((a, b) => b.timestamp - a.timestamp),
     })),
 });
 
@@ -136,22 +138,6 @@ export const mppStore = createStore<
     }
   )
 );
-
-const fixTicketsOrder = (
-  state: GeneralConfigStore &
-    ThemeStore &
-    TicketBookmarkStore &
-    TicketHistoryStore &
-    TicketLastSessionStore
-) => {
-  state.setHistory(state.history.toSorted((a, b) => b.timestamp - a.timestamp));
-
-  state.setBookmarks(
-    state.bookmarks.toSorted((a, b) => b.timestamp - a.timestamp)
-  );
-};
-
-mppStore.persist.onFinishHydration((state) => fixTicketsOrder(state));
 
 mppStore.subscribe((state, prevState) => {
   onToneConfigChange(state.tone, prevState.tone);

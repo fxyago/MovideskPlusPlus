@@ -119,8 +119,10 @@ export const mergeAndFilter = <T>({
 };
 
 export const onPageLeave = (callback: () => void) => {
-  window.addEventListener('pagehide', callback);
-  window.addEventListener('beforeunload', callback);
+  window.addEventListener('beforeunload', (event) => {
+    callback();
+    event.preventDefault();
+  });
 };
 
 export const onToneConfigChange = (currentTone: Tone, previousTone: Tone) => {
