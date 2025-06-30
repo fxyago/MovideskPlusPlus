@@ -45,7 +45,7 @@ export const observeElementInsertion = (
     return;
   }
 
-  const observer = new MutationObserver((mutationsList, observer) => {
+  const observer = new MutationObserver((mutationsList, _observer) => {
     for (const mutation of mutationsList) {
       if (mutation.type === 'childList') {
         for (const addedNode of mutation.addedNodes) {

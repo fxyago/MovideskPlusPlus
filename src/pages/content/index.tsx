@@ -1,5 +1,10 @@
 import { Toaster } from '@/components/ui/sonner';
-import { bindTicketBookmark, getOpenedTickets } from '@/lib/MovideskActions';
+import {
+  bindTicketBookmark,
+  fixCloseIcon,
+  getOpenedTicketsWithDetails,
+  mountSavedAppointments,
+} from '@/lib/MovideskActions';
 import {
   observeElementInsertion,
   onPageLeave,
@@ -51,8 +56,26 @@ observeElementInsertion(
   bindTicketBookmark
 );
 
+observeElementInsertion(['ticket-appointments-container'], (el) => {
+  mountSavedAppointments(el.closest('.ticket-appointments')!);
+});
+
+setTimeout(() => {
+  document
+    .querySelectorAll('.ticket-appointments')
+    .forEach((element) => mountSavedAppointments(element as HTMLElement));
+}, 1000);
+
+setInterval(() => {
+  document.querySelectorAll('tab-ticket-form').forEach((ticketElement) => {
+    if (ticketElement instanceof HTMLElement) bindTicketBookmark(ticketElement);
+  });
+
+  fixCloseIcon();
+}, 5000);
+
 onPageLeave(() => {
-  const ticketsAbertos = getOpenedTickets() ?? [];
+  const ticketsAbertos = getOpenedTicketsWithDetails() ?? [];
 
   const state = mppStore.getState();
 
@@ -81,8 +104,11 @@ onPageLeave(() => {
     if (!map.has(ticket.id)) {
       state.addToHistory({ ...ticket, timestamp });
       ticketsSalvos++;
+    } else {
+      map.set(ticket.id, {
+        ...ticket,
+        timestamp,
+      });
     }
   });
-
-  console.log('Tickets salvos: ', ticketsSalvos);
 });

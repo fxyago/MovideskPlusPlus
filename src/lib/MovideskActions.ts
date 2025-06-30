@@ -1,7 +1,10 @@
 import { mppStore } from '@/pages/content/state';
-import { Ticket } from '@/types';
+import { Appointment, Ticket } from '@/types';
 import { toast } from 'sonner';
 import { titleToTicket } from './utils';
+
+import { LastAppointments } from '@/pages/content/LastAppointments';
+import { createRoot } from 'react-dom/client';
 
 export const openTicket = (ticketId: string) => {
   let input = document.getElementById(
@@ -45,6 +48,90 @@ export const getOpenedTickets = () => {
     .filter((t) => t.id.toString() !== '-1');
 };
 
+const extractAppointments = (appointmentsElements: Element[]) => {
+  const appointments = [] as Appointment[];
+
+  appointmentsElements.forEach((appointmentElement) => {
+    const appointmentDate =
+      appointmentElement.querySelector<HTMLInputElement>('.appointment-date')
+        ?.value ?? '';
+    const start =
+      appointmentElement.querySelector<HTMLInputElement>(
+        '.time-appointment-period-start input'
+      )?.value ?? '';
+    const end =
+      appointmentElement.querySelector<HTMLInputElement>(
+        '.time-appointment-period-end input'
+      )?.value ?? '';
+
+    appointments.push({
+      date: appointmentDate,
+      start,
+      end,
+    });
+  });
+
+  return appointments;
+};
+
+export const getOpenedTicketsWithDetails = () => {
+  const ticketList = document.getElementsByClassName(
+    'tab-li tab-ticket tab-ticket-form'
+  );
+
+  if (!ticketList || ticketList.length == 0) return;
+
+  return new Array(...ticketList)
+    .map((t) => {
+      const ticketData = t
+        .querySelector('.tab-title')
+        ?.textContent?.split(/-(.*)/s)
+        .map((t) => t.trim()) ?? ['-1', 'null'];
+
+      const ticketPane = document.querySelector(
+        `.tab-pane[data-tab-group="${ticketData[0]}"]`
+      );
+
+      const appointmentsElements = ticketPane
+        ? new Array(
+            ...ticketPane.querySelectorAll(
+              '.ticket-appointments-container:not([style*="display: none"])'
+            )
+          )
+        : [];
+
+      const text = ticketPane?.querySelector('.fr-element.fr-view')?.innerHTML;
+      const appointments = extractAppointments(appointmentsElements);
+
+      return {
+        id: ticketData[0],
+        title: ticketData[1],
+        type: t.classList.contains('internal') ? 'internal' : 'public',
+        details: {
+          text,
+          appointments,
+        },
+      } as Ticket;
+    })
+    .filter((t) => t.id.toString() !== '-1');
+};
+
+export const fixCloseIcon = () => {
+  document.querySelectorAll('button.close').forEach((element) => {
+    element.nodeValue = '\u00d7';
+  });
+};
+
+export const removeBookmarkedFromElement = (ticketId: string) => {
+  const ticket = document.getElementsByClassName(
+    `tab-ticket-${ticketId} bookmarked`
+  );
+
+  if (!ticket) return;
+
+  ticket.item(0)?.classList.remove('bookmarked');
+};
+
 export const bindTicketBookmark = (element: HTMLElement) => {
   const title = element.querySelector('.tab-title')?.textContent ?? '';
   let bookmarkButton = element.querySelector('.bookmark-button');
@@ -86,4 +173,27 @@ export const bindTicketBookmark = (element: HTMLElement) => {
       toast.success(`Ticket ${ticket.id} adicionado aos favoritos!`);
     }
   });
+};
+
+export const mountSavedAppointments = (element: HTMLElement) => {
+  const pane = element.closest('.tab-pane[data-tab-group]');
+  if (!pane) return;
+
+  const ticketId = pane.getAttribute('data-tab-group');
+  if (!ticketId) return;
+
+  const ticket = mppStore.getState().lastSession.find((t) => t.id === ticketId);
+  if (!ticket || !ticket.details?.appointments) return;
+
+  const elementExists = document.getElementById(
+    `ticket-${ticket.id}-last-appointments`
+  );
+  if (elementExists) return;
+
+  const root = document.createElement('div');
+  root.id = `ticket-${ticket.id}-last-appointments`;
+
+  element.insertAdjacentElement('beforebegin', root);
+
+  createRoot(root).render(LastAppointments(ticket));
 };
