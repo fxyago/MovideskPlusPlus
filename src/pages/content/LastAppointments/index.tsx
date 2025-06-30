@@ -1,5 +1,6 @@
 import { Ticket } from '@/types';
 import { Trash, X } from 'lucide-react';
+import { toast } from 'sonner';
 import { mppStore } from '../state';
 
 export const LastAppointments = (ticket: Ticket) => {
@@ -12,24 +13,29 @@ export const LastAppointments = (ticket: Ticket) => {
         <h5 className="font-semibold text-zinc-800!">
           Apontamentos salvos da última sessão:
         </h5>
-        <span>
+        <span className="space-x-4">
           <button
-            className="font-semibold"
+            className="font-semibold text-zinc-800!"
             about="Ocultar apontamentos salvos desse ticket"
-            onClick={() =>
+            onClick={() => {
               document
                 .getElementById(`ticket-${ticket.id}-last-appointments`)!
-                .classList.add('hidden')
-            }
+                .classList.add('hidden');
+              toast.success('Apontamentos de última sessão ocultados');
+            }}
           >
             <X />
           </button>
           <button
-            className="font-semibold"
-            about="Deletar apontamentos salvos desse ticket"
-            onClick={() =>
-              mppStore.getState().removeSavedAppointments(ticket.id)
-            }
+            className="font-semibold text-zinc-800!"
+            about="Deletar e ocultar apontamentos salvos desse ticket"
+            onClick={() => {
+              mppStore.getState().removeSavedAppointments(ticket.id);
+              document
+                .getElementById(`ticket-${ticket.id}-last-appointments`)!
+                .classList.add('hidden');
+              toast.success('Apontamentos salvos deletados');
+            }}
           >
             <Trash />
           </button>
