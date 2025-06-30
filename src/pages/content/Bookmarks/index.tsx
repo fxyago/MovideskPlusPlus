@@ -4,6 +4,7 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from '@/components/ui/context-menu';
+import { removeBookmarkedFromElement } from '@/lib/MovideskActions';
 import { BookmarkMinus } from 'lucide-react';
 import { toast } from 'sonner';
 import { useStore } from 'zustand';
@@ -32,6 +33,7 @@ export default function Bookmarks() {
               onClick={() => {
                 store.unbookmark(ticket.id);
                 toast.success(`Ticket ${ticket.id} removido dos favoritos!`);
+                removeBookmarkedFromElement(ticket.id);
               }}
             >
               <BookmarkMinus className="size-6" />

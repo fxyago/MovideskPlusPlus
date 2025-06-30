@@ -1,7 +1,18 @@
+export type Appointment = {
+  date: string;
+  start: string;
+  end: string;
+};
+
 export type Ticket = {
   id: string;
   title: string;
   type?: 'internal' | 'public';
+
+  details?: {
+    text?: string;
+    appointments: Appointment[];
+  };
 };
 
 export type TicketWithTimestamp = Ticket & {

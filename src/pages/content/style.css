@@ -415,6 +415,19 @@
     }
   }
 
+  .protocol-content {
+    background-color: var(--mpp-secondary) !important;
+    color: var(--mpp-text-primary) !important;
+
+    .protocol-modal-title {
+      color: var(--mpp-text-primary) !important;
+    }
+
+    .sla-ticket-solution-date {
+      color: var(--mpp-text-secondary) !important;
+    }
+  }
+
   .ui-datepicker {
     .ui-datepicker-title select {
       color: var(--mpp-text-primary) !important;
