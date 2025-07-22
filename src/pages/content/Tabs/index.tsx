@@ -20,9 +20,6 @@ export default function MenuTabs() {
   const [tab, setTab] = useState(store.lastTab);
   const [search, setSearch] = useState('');
 
-  console.log('Current tab: ', tab);
-  console.log('Search: ', search);
-
   return (
     <Tabs
       className="flex max-h-[560px] max-w-full grow gap-2 p-2!"

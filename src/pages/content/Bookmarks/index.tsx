@@ -42,54 +42,51 @@ export default function Bookmarks({ search }: { search: string }) {
 
   return (
     <TicketList list={store.bookmarks} emptyMessage="Nenhum ticket favoritado">
-      {list.length === 0
-        ? search.length > 0 && (
-            <div className="text-foreground/50 mt-8 flex h-full w-full items-center justify-center">
-              <div className="text-center text-xl">
-                Nenhum ticket encontrado
-              </div>
-            </div>
-          )
-        : list.map((ticket) => (
-            <ContextMenu key={ticket.id}>
-              <ContextMenuTrigger>
-                <Ticket
-                  key={ticket.id}
-                  ticket={ticket}
-                  tooltipMessage={'Favoritado em:'}
-                  customTitle={
-                    ticket.highlightRanges ? (
-                      <Highlight
-                        className={cn(
-                          isDarkMode ? 'bg-yellow-500/50!' : 'bg-yellow-500/40!'
-                        )}
-                        text={ticket.title}
-                        ranges={ticket.highlightRanges}
-                      />
-                    ) : (
-                      ticket.title
-                    )
-                  }
-                />
-              </ContextMenuTrigger>
-              <ContextMenuContent>
-                <ContextMenuItem
-                  variant="destructive"
-                  className="p-2! text-xl font-semibold"
-                  onClick={() => {
-                    store.unbookmark(ticket.id);
-                    toast.success(
-                      `Ticket ${ticket.id} removido dos favoritos!`
-                    );
-                    removeBookmarkedFromElement(ticket.id);
-                  }}
-                >
-                  <BookmarkMinus className="size-6" />
-                  Desfavoritar
-                </ContextMenuItem>
-              </ContextMenuContent>
-            </ContextMenu>
-          ))}
+      {search.length > 0 && store.bookmarks.length > 0 && list.length === 0 && (
+        <div className="text-foreground/50 mt-8 flex h-full w-full items-center justify-center">
+          <div className="text-center text-xl">Nenhum ticket encontrado</div>
+        </div>
+      )}
+
+      {list.length > 0 &&
+        list.map((ticket) => (
+          <ContextMenu key={ticket.id}>
+            <ContextMenuTrigger>
+              <Ticket
+                key={ticket.id}
+                ticket={ticket}
+                tooltipMessage={'Favoritado em:'}
+                customTitle={
+                  ticket.highlightRanges ? (
+                    <Highlight
+                      className={cn(
+                        isDarkMode ? 'bg-yellow-500/50!' : 'bg-yellow-500/40!'
+                      )}
+                      text={ticket.title}
+                      ranges={ticket.highlightRanges}
+                    />
+                  ) : (
+                    ticket.title
+                  )
+                }
+              />
+            </ContextMenuTrigger>
+            <ContextMenuContent>
+              <ContextMenuItem
+                variant="destructive"
+                className="p-2! text-xl font-semibold"
+                onClick={() => {
+                  store.unbookmark(ticket.id);
+                  toast.success(`Ticket ${ticket.id} removido dos favoritos!`);
+                  removeBookmarkedFromElement(ticket.id);
+                }}
+              >
+                <BookmarkMinus className="size-6" />
+                Desfavoritar
+              </ContextMenuItem>
+            </ContextMenuContent>
+          </ContextMenu>
+        ))}
     </TicketList>
   );
 }
