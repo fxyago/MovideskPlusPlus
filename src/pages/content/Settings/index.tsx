@@ -20,7 +20,7 @@ const getNextTone = (currentValue: Tone): Tone => {
   return toneCycle[nextIndex];
 };
 
-export default function Settings() {
+export default function Settings({ search }: { search: string }) {
   const store = useStore(mppStore);
 
   const isDarkMode = store.theme === 'dark';

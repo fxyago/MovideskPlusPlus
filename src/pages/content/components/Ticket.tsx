@@ -11,15 +11,18 @@ import { cn } from '@/lib/utils';
 import { TicketWithTimestamp } from '@/types';
 import { formatDistance } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { ReactNode } from 'react';
 
 export const Ticket = ({
   ticket,
   className,
   tooltipMessage,
+  customTitle,
 }: {
   ticket: TicketWithTimestamp;
   className?: string;
   tooltipMessage?: string;
+  customTitle?: ReactNode;
 }) => {
   return (
     <TooltipProvider>
@@ -43,7 +46,7 @@ export const Ticket = ({
             >
               {ticket.id}
             </Badge>
-            <span className="truncate">{ticket.title}</span>
+            <span className="truncate">{customTitle ?? ticket.title}</span>
           </Button>
         </TooltipTrigger>
         <TooltipContent className="text-foreground bg-muted flex flex-col rounded-md text-lg font-bold shadow-md *:space-x-2">
@@ -64,7 +67,7 @@ export const Ticket = ({
           <div className="flex">
             <span>Titulo:</span>
             <span className="block max-w-72 font-normal whitespace-break-spaces">
-              {ticket.title}
+              {customTitle ?? ticket.title}
             </span>
           </div>
           <div>

@@ -1,5 +1,7 @@
+import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Tab } from '@/types';
+import { useState } from 'react';
 import { useStore } from 'zustand';
 import Bookmarks from '../Bookmarks';
 import History from '../History';
@@ -15,10 +17,20 @@ const CONFIG: Tab = 'CONFIG';
 export default function MenuTabs() {
   const store = useStore(mppStore);
 
+  const [tab, setTab] = useState(store.lastTab);
+  const [search, setSearch] = useState('');
+
+  console.log('Current tab: ', tab);
+  console.log('Search: ', search);
+
   return (
     <Tabs
       className="flex max-h-[560px] max-w-full grow gap-2 p-2!"
       defaultValue={store.lastTab}
+      onValueChange={(value) => {
+        setTab(value as Tab);
+        store.setLastTab(value as Tab);
+      }}
     >
       <TabsList className="bg-foreground/10 min-h-16 w-full shadow">
         <TabsTrigger value={BOOKMARKED}>Favoritos</TabsTrigger>
@@ -27,17 +39,26 @@ export default function MenuTabs() {
         <TabsTrigger value={CONFIG}>Config</TabsTrigger>
       </TabsList>
       <div className="bg-foreground/10 max-h-[500px] grow rounded-md p-2">
+        <span className="flex w-full items-center justify-between p-2!">
+          <Input
+            className="w-full p-6!"
+            placeholder="Buscar..."
+            hidden={tab === CONFIG}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </span>
         <TabsContent value={BOOKMARKED} className="p-2">
-          <Bookmarks />
+          <Bookmarks search={search} />
         </TabsContent>
         <TabsContent value={LAST_SESSION} className="p-2">
-          <LastSession />
+          <LastSession search={search} />
         </TabsContent>
         <TabsContent value={HISTORY} className="p-2">
-          <History />
+          <History search={search} />
         </TabsContent>
         <TabsContent value={CONFIG} className="p-2">
-          <Settings />
+          <Settings search={search} />
         </TabsContent>
       </div>
     </Tabs>
