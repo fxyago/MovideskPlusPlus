@@ -41,8 +41,8 @@ export default function MenuTabs() {
       <div className="bg-foreground/10 max-h-[500px] grow rounded-md p-2">
         <span className="flex w-full items-center justify-between p-2!">
           <Input
-            className="w-full p-6!"
-            placeholder="Buscar..."
+            className="placeholder:text-foreground/50! text-foreground/85! border-foreground/15 w-full border p-6! font-semibold"
+            placeholder="Buscar por tickets..."
             hidden={tab === CONFIG}
             value={search}
             onChange={(e) => setSearch(e.target.value)}

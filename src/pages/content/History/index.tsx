@@ -40,42 +40,50 @@ export default function History({ search }: { search: string }) {
 
   return (
     <TicketList list={store.history} emptyMessage="Nenhum ticket no histórico">
-      {list.map((ticket) => (
-        <ContextMenu key={ticket.id}>
-          <ContextMenuTrigger>
-            <Ticket
-              key={ticket.id}
-              ticket={ticket}
-              tooltipMessage={'Visto pela última vez em:'}
-              customTitle={
-                ticket.highlightRanges ? (
-                  <Highlight
-                    className={cn(
-                      isDarkMode ? 'bg-yellow-500/50!' : 'bg-yellow-500/40!'
-                    )}
-                    text={ticket.title}
-                    ranges={ticket.highlightRanges}
-                  />
-                ) : (
-                  ticket.title
-                )
-              }
-            />
-          </ContextMenuTrigger>
-          <ContextMenuContent>
-            <ContextMenuItem
-              variant="destructive"
-              className="p-2! text-xl font-semibold"
-              onClick={() => {
-                store.removeFromHistory(ticket);
-                toast.success(`Ticket ${ticket.id} removido do histórico!`);
-              }}
-            >
-              <Trash className="size-6" /> Remover
-            </ContextMenuItem>
-          </ContextMenuContent>
-        </ContextMenu>
-      ))}
+      {list.length === 0
+        ? search.length > 0 && (
+            <div className="text-foreground/50 mt-8 flex h-full w-full items-center justify-center">
+              <div className="text-center text-xl">
+                Nenhum ticket encontrado
+              </div>
+            </div>
+          )
+        : list.map((ticket) => (
+            <ContextMenu key={ticket.id}>
+              <ContextMenuTrigger>
+                <Ticket
+                  key={ticket.id}
+                  ticket={ticket}
+                  tooltipMessage={'Visto pela última vez em:'}
+                  customTitle={
+                    ticket.highlightRanges ? (
+                      <Highlight
+                        className={cn(
+                          isDarkMode ? 'bg-yellow-500/50!' : 'bg-yellow-500/40!'
+                        )}
+                        text={ticket.title}
+                        ranges={ticket.highlightRanges}
+                      />
+                    ) : (
+                      ticket.title
+                    )
+                  }
+                />
+              </ContextMenuTrigger>
+              <ContextMenuContent>
+                <ContextMenuItem
+                  variant="destructive"
+                  className="p-2! text-xl font-semibold"
+                  onClick={() => {
+                    store.removeFromHistory(ticket);
+                    toast.success(`Ticket ${ticket.id} removido do histórico!`);
+                  }}
+                >
+                  <Trash className="size-6" /> Remover
+                </ContextMenuItem>
+              </ContextMenuContent>
+            </ContextMenu>
+          ))}
     </TicketList>
   );
 }

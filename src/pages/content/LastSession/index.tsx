@@ -43,46 +43,54 @@ export default function LastSession({ search }: { search: string }) {
       list={store.lastSession}
       emptyMessage="Nenhum ticket salvo na última sessão"
     >
-      {list.map((ticket) => (
-        <ContextMenu key={ticket.id}>
-          <ContextMenuTrigger>
-            <Ticket
-              key={ticket.id}
-              ticket={ticket}
-              tooltipMessage={'Salvo em:'}
-              customTitle={
-                ticket.highlightRanges ? (
-                  <Highlight
-                    className={cn(
-                      isDarkMode ? 'bg-yellow-500/50!' : 'bg-yellow-500/40!'
-                    )}
-                    text={ticket.title}
-                    ranges={ticket.highlightRanges}
-                  />
-                ) : (
-                  ticket.title
-                )
-              }
-            />
-          </ContextMenuTrigger>
-          <ContextMenuContent>
-            <ContextMenuItem
-              variant="destructive"
-              className="p-2! text-xl font-semibold"
-              onClick={() => {
-                store.setLastSession(
-                  ...store.lastSession.filter((t) => t.id !== ticket.id)
-                );
-                toast.success(
-                  `Ticket ${ticket.id} removido da lista da ultima sessão!`
-                );
-              }}
-            >
-              <Trash className="size-6" /> Remover da lista
-            </ContextMenuItem>
-          </ContextMenuContent>
-        </ContextMenu>
-      ))}
+      {list.length === 0
+        ? search.length > 0 && (
+            <div className="text-foreground/50 mt-8 flex h-full w-full items-center justify-center">
+              <div className="text-center text-xl">
+                Nenhum ticket encontrado
+              </div>
+            </div>
+          )
+        : list.map((ticket) => (
+            <ContextMenu key={ticket.id}>
+              <ContextMenuTrigger>
+                <Ticket
+                  key={ticket.id}
+                  ticket={ticket}
+                  tooltipMessage={'Salvo em:'}
+                  customTitle={
+                    ticket.highlightRanges ? (
+                      <Highlight
+                        className={cn(
+                          isDarkMode ? 'bg-yellow-500/50!' : 'bg-yellow-500/40!'
+                        )}
+                        text={ticket.title}
+                        ranges={ticket.highlightRanges}
+                      />
+                    ) : (
+                      ticket.title
+                    )
+                  }
+                />
+              </ContextMenuTrigger>
+              <ContextMenuContent>
+                <ContextMenuItem
+                  variant="destructive"
+                  className="p-2! text-xl font-semibold"
+                  onClick={() => {
+                    store.setLastSession(
+                      ...store.lastSession.filter((t) => t.id !== ticket.id)
+                    );
+                    toast.success(
+                      `Ticket ${ticket.id} removido da lista da ultima sessão!`
+                    );
+                  }}
+                >
+                  <Trash className="size-6" /> Remover da lista
+                </ContextMenuItem>
+              </ContextMenuContent>
+            </ContextMenu>
+          ))}
     </TicketList>
   );
 }
