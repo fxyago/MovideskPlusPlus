@@ -122,8 +122,15 @@ export const mergeAndFilter = <T>({
   });
 };
 
-export const onPageLeave = (callback: () => void) => {
+export const onNavigateFromLogin = (callback: () => void) => {
+  window.addEventListener('beforeunload', () => {
+    if (window.location.pathname.includes('/Account/Login')) callback();
+  });
+};
+
+export const onNavigate = (callback: () => void) => {
   window.addEventListener('beforeunload', (event) => {
+    if (window.location.pathname.includes('/Account/Login')) return;
     callback();
     event.preventDefault();
   });

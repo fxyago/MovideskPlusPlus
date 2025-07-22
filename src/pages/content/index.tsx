@@ -7,7 +7,7 @@ import {
 } from '@/lib/MovideskActions';
 import {
   observeElementInsertion,
-  onPageLeave,
+  onNavigateFromLogin,
   waitForElement,
 } from '@/lib/utils';
 import { TicketWithTimestamp } from '@/types';
@@ -74,7 +74,12 @@ setInterval(() => {
   fixCloseIcon();
 }, 5000);
 
-onPageLeave(() => {
+onNavigateFromLogin(() => {
+  const state = mppStore.getState();
+  state.setLastSession(...state.sessionBuffer);
+});
+
+setInterval(() => {
   const ticketsAbertos = getOpenedTicketsWithDetails() ?? [];
 
   const state = mppStore.getState();
@@ -93,7 +98,7 @@ onPageLeave(() => {
 
   const timestamp = new Date().getTime();
 
-  state.setLastSession(
+  state.setSessionBuffer(
     ...ticketsAbertos.map((ticket) => ({
       ...ticket,
       timestamp,
@@ -111,4 +116,4 @@ onPageLeave(() => {
       });
     }
   });
-});
+}, 10000);

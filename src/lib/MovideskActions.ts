@@ -83,10 +83,10 @@ export const getOpenedTicketsWithDetails = () => {
 
   return new Array(...ticketList)
     .map((t) => {
-      const ticketData = t
-        .querySelector('.tab-title')
-        ?.textContent?.split(/-(.*)/s)
-        .map((t) => t.trim()) ?? ['-1', 'null'];
+      const ticketData = t?.getAttribute('data-md-original-title') ?? [
+        '-1',
+        'null',
+      ];
 
       const ticketPane = document.querySelector(
         `.tab-pane[data-tab-group="${ticketData[0]}"]`

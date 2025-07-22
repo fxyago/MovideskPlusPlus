@@ -100,6 +100,8 @@ const createTicketHistorySlice: StateCreator<TicketHistoryStore> = (
 });
 
 interface TicketLastSessionStore {
+  sessionBuffer: TicketWithTimestamp[];
+  setSessionBuffer: (...tickets: TicketWithTimestamp[]) => void;
   lastSession: TicketWithTimestamp[];
   setLastSession: (...tickets: TicketWithTimestamp[]) => void;
   removeSavedAppointments: (ticketId: string) => void;
@@ -108,6 +110,11 @@ interface TicketLastSessionStore {
 const createTicketLastSessionSlice: StateCreator<TicketLastSessionStore> = (
   set
 ) => ({
+  sessionBuffer: [] as TicketWithTimestamp[],
+  setSessionBuffer: (...tickets: TicketWithTimestamp[]) =>
+    set(() => ({
+      sessionBuffer: tickets.toSorted((a, b) => b.timestamp - a.timestamp),
+    })),
   lastSession: [] as TicketWithTimestamp[],
   setLastSession: (...tickets: TicketWithTimestamp[]) =>
     set(() => ({
