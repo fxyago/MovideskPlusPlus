@@ -10,7 +10,6 @@ import {
   onNavigateFromLogin,
   waitForElement,
 } from '@/lib/utils';
-import { TicketWithTimestamp } from '@/types';
 import { createRoot } from 'react-dom/client';
 import { toast } from 'sonner';
 import { MainMenu } from './Menu';
@@ -84,16 +83,6 @@ setInterval(() => {
 
   const state = mppStore.getState();
 
-  const savedTickets = state.history;
-
-  const map = new Map<string, TicketWithTimestamp>();
-
-  savedTickets.forEach((ticket) => {
-    map.set(ticket.id, ticket);
-  });
-
-  let ticketsSalvos = 0;
-
   if (ticketsAbertos.length === 0) return;
 
   const timestamp = new Date().getTime();
@@ -105,15 +94,7 @@ setInterval(() => {
     }))
   );
 
-  ticketsAbertos.forEach((ticket) => {
-    if (!map.has(ticket.id)) {
-      state.addToHistory({ ...ticket, timestamp });
-      ticketsSalvos++;
-    } else {
-      map.set(ticket.id, {
-        ...ticket,
-        timestamp,
-      });
-    }
-  });
+  ticketsAbertos.forEach((ticket) =>
+    state.addToHistory({ ...ticket, timestamp })
+  );
 }, 10000);

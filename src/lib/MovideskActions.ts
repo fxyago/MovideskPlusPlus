@@ -84,7 +84,8 @@ export const getOpenedTicketsWithDetails = () => {
   return new Array(...ticketList)
     .map((t) => {
       const ticketData = t
-        ?.getAttribute('data-md-original-title')
+        ?.getAttribute('data-original-title')
+        ?.trim()
         ?.split(/-(.*)/s)
         .map((t) => t.trim()) ?? ['-1', 'null'];
 
@@ -113,7 +114,9 @@ export const getOpenedTicketsWithDetails = () => {
         },
       } as Ticket;
     })
-    .filter((t) => t.id.toString() !== '-1');
+    .filter(
+      (t) => t.id.toString() !== '-1' && t.id.toString() !== 'Carregando'
+    );
 };
 
 export const fixCloseIcon = () => {
