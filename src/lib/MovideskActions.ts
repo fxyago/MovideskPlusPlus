@@ -83,14 +83,22 @@ export const getOpenedTicketsWithDetails = () => {
 
   return new Array(...ticketList)
     .map((t) => {
-      const ticketData = t
-        ?.getAttribute('data-original-title')
-        ?.trim()
-        ?.split(/-(.*)/s)
-        .map((t) => t.trim()) ?? ['-1', 'null'];
+      const id = t.id.replace('tab', '').trim() ?? '-1';
+
+      const ticketNameRegex = /^(\d+ - )(.*)$/;
+
+      const title =
+        t
+          ?.getAttribute('data-original-title')
+          ?.trim()
+          ?.split(/-(.*)/s)
+          .map((t) => {
+            const match = t.match(ticketNameRegex);
+            return match ? match[2] : t;
+          }) ?? 'null';
 
       const ticketPane = document.querySelector(
-        `.tab-pane[data-tab-group="${ticketData[0]}"]`
+        `.tab-pane[data-tab-group="${id}"]`
       );
 
       const appointmentsElements = ticketPane
@@ -105,8 +113,8 @@ export const getOpenedTicketsWithDetails = () => {
       const appointments = extractAppointments(appointmentsElements);
 
       return {
-        id: ticketData[0],
-        title: ticketData[1],
+        id,
+        title,
         type: t.classList.contains('internal') ? 'internal' : 'public',
         details: {
           text,
