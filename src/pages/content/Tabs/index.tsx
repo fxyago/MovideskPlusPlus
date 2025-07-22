@@ -4,7 +4,7 @@ import { useStore } from 'zustand';
 import Bookmarks from '../Bookmarks';
 import History from '../History';
 import LastSession from '../LastSession';
-import ToggleDarkMode from '../ToggleDarkMode';
+import Settings from '../Settings';
 import { mppStore } from '../state';
 
 const BOOKMARKED: Tab = 'BOOKMARKED';
@@ -37,7 +37,7 @@ export default function MenuTabs() {
           <History />
         </TabsContent>
         <TabsContent value={CONFIG} className="p-2">
-          <ToggleDarkMode />
+          <Settings />
         </TabsContent>
       </div>
     </Tabs>

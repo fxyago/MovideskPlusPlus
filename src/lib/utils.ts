@@ -1,5 +1,9 @@
+import { mppStore } from '@/pages/content/state';
 import { Ticket, Tone } from '@/types';
 import { clsx, type ClassValue } from 'clsx';
+import { format } from 'date-fns';
+import { ChangeEvent } from 'react';
+import { toast } from 'sonner';
 import { twMerge } from 'tailwind-merge';
 import { groupBy, maxBy } from './lowerdash';
 
@@ -143,4 +147,48 @@ export const onCustomToneChange = (
   const docClasslist = document.documentElement.classList;
   if (currentUseCustomTone) docClasslist.remove('custom-tone');
   else docClasslist.add('custom-tone');
+};
+
+export const filterData = (obj: any) => {
+  const filtededObj: any = {};
+  for (const key in obj) {
+    if (typeof obj[key] !== 'function') {
+      filtededObj[key] = obj[key];
+    }
+  }
+  return filtededObj;
+};
+
+export const exportState = (state: ReturnType<typeof mppStore.getState>) => {
+  const data = filterData(state);
+  const json = JSON.stringify(data);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const formatString = 'yyyy-MM-dd_HH-mm-ss';
+  a.download = `MovideskPlusPlus ${format(new Date(), formatString)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast.success('Tickets exportados com sucesso!');
+};
+
+export const importState = (
+  event: ChangeEvent<HTMLInputElement>,
+  currentState: ReturnType<typeof mppStore.getState>,
+  setState: typeof mppStore.setState
+) => {
+  const file = event.target.files?.[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.readAsText(file);
+  reader.onload = (e) => {
+    const imported = JSON.parse(e.target?.result as string) as Partial<
+      typeof currentState
+    >;
+    setState({ ...currentState, ...imported });
+  };
+
+  toast.success('Tickets importados com sucesso!');
 };

@@ -2,7 +2,9 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Switch } from '@/components/ui/switch';
+import { exportState, importState } from '@/lib/utils';
 import { Tone } from '@/types';
+import { useRef } from 'react';
 import { useModeAnimation } from 'react-theme-switch-animation';
 import { useStore } from 'zustand';
 import { mppStore } from '../state';
@@ -18,10 +20,12 @@ const getNextTone = (currentValue: Tone): Tone => {
   return toneCycle[nextIndex];
 };
 
-export default function ToggleDarkMode() {
+export default function Settings() {
   const store = useStore(mppStore);
 
   const isDarkMode = store.theme === 'dark';
+
+  const importRef = useRef<HTMLInputElement>(null);
 
   const { ref, toggleSwitchTheme } = useModeAnimation({
     isDarkMode,
@@ -57,6 +61,32 @@ export default function ToggleDarkMode() {
             Próximo Tema
           </Button>
         </span>
+        <div className="w-full">
+          <Label className="pl-4 text-2xl font-normal!">
+            Configurações de Tickets:
+          </Label>
+          <span className="flex w-full items-center justify-between px-4">
+            <Button
+              className="p-6! font-medium!"
+              onClick={() => importRef.current?.click()}
+            >
+              Importar Tickets
+              <input
+                ref={importRef}
+                type="file"
+                accept="application/json"
+                hidden
+                onChange={(e) => importState(e, store, mppStore.setState)}
+              />
+            </Button>
+            <Button
+              className="p-6! font-medium!"
+              onClick={() => exportState(store)}
+            >
+              Exportar Tickets
+            </Button>
+          </span>
+        </div>
       </div>
     </div>
   );
