@@ -50,13 +50,15 @@ waitForElement('#tabs', () => {
   }, 2000);
 });
 
-observeElementInsertion(
-  ['tab-li', 'tab-ticket', 'tab-ticket-form'],
-  bindTicketBookmark
-);
+observeElementInsertion({
+  targetClasses: ['tab-li', 'tab-ticket', 'tab-ticket-form'],
+  exceptionClasses: ['create'],
+  callback: bindTicketBookmark,
+});
 
-observeElementInsertion(['ticket-appointments-container'], (el) => {
-  mountSavedAppointments(el.closest('.ticket-appointments')!);
+observeElementInsertion({
+  targetClasses: ['ticket-appointments-container'],
+  callback: (el) => mountSavedAppointments(el.closest('.ticket-appointments')!),
 });
 
 setTimeout(() => {
@@ -66,8 +68,12 @@ setTimeout(() => {
 }, 1000);
 
 setInterval(() => {
-  document.querySelectorAll('tab-ticket-form').forEach((ticketElement) => {
-    if (ticketElement instanceof HTMLElement) bindTicketBookmark(ticketElement);
+  document.querySelectorAll('.tab-ticket-form').forEach((ticketElement) => {
+    const isTicketBindable =
+      ticketElement instanceof HTMLElement &&
+      !ticketElement.classList.contains('create');
+
+    if (isTicketBindable) bindTicketBookmark(ticketElement);
   });
 
   fixCloseIcon();

@@ -40,10 +40,15 @@ export const waitForElement = async (
   });
 };
 
-export const observeElementInsertion = (
-  targetClasses: string[],
-  callback: (addedNode: HTMLElement) => void
-) => {
+export const observeElementInsertion = ({
+  targetClasses,
+  exceptionClasses = [],
+  callback,
+}: {
+  targetClasses: string[];
+  exceptionClasses?: string[];
+  callback: (addedNode: HTMLElement) => void;
+}) => {
   if (!Array.isArray(targetClasses) || targetClasses.length === 0) {
     console.error('targetClasses must be a non-empty array of strings.');
     return;
@@ -57,11 +62,13 @@ export const observeElementInsertion = (
             addedNode.nodeType === Node.ELEMENT_NODE &&
             addedNode instanceof HTMLElement
           ) {
-            const hasAllClasses = targetClasses.every((cls) =>
-              addedNode.classList.contains(cls)
-            );
+            const matches =
+              targetClasses.every((cls) => addedNode.classList.contains(cls)) &&
+              !exceptionClasses.some((cls) =>
+                addedNode.classList.contains(cls)
+              );
 
-            if (hasAllClasses) callback(addedNode);
+            if (matches) callback(addedNode);
           }
         }
       }

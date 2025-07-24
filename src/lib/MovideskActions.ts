@@ -74,6 +74,23 @@ const extractAppointments = (appointmentsElements: Element[]) => {
   return appointments;
 };
 
+const ticketNameRegex = /^(\d+ - )(.*)$/;
+
+const extractIdFromElement = (element: Element) => {
+  if (element.getAttribute('data-uri')?.includes('Create')) return '-1';
+  return (
+    element.getAttribute('data-tab-group')?.replace('tab', '').trim() ?? '-1'
+  );
+};
+
+const extractNameFromElement = (element: Element) => {
+  const originalTitle =
+    element?.getAttribute('data-original-title')?.trim() ?? '';
+
+  const match = originalTitle.match(ticketNameRegex);
+  return match ? match[2] : originalTitle;
+};
+
 export const getOpenedTicketsWithDetails = () => {
   const ticketList = document.getElementsByClassName(
     'tab-li tab-ticket tab-ticket-form'
@@ -82,20 +99,11 @@ export const getOpenedTicketsWithDetails = () => {
   if (!ticketList || ticketList.length == 0) return;
 
   return new Array(...ticketList)
+    .filter((el) => !el.classList.contains('create'))
     .map((t) => {
-      const id = t.id.replace('tab', '').trim() ?? '-1';
+      const id = extractIdFromElement(t);
 
-      const ticketNameRegex = /^(\d+ - )(.*)$/;
-
-      const title =
-        t
-          ?.getAttribute('data-original-title')
-          ?.trim()
-          ?.split(/-(.*)/s)
-          .map((t) => {
-            const match = t.match(ticketNameRegex);
-            return match ? match[2] : t;
-          }) ?? 'null';
+      const title = extractNameFromElement(t);
 
       const ticketPane = document.querySelector(
         `.tab-pane[data-tab-group="${id}"]`

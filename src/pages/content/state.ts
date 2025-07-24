@@ -93,7 +93,7 @@ const createTicketHistorySlice: StateCreator<TicketHistoryStore> = (
   removeFromHistory: (...tickets: TicketWithTimestamp[]) =>
     set((state) => ({
       history: state.history.filter((t) =>
-        tickets.some((t2) => t2.id === t.id)
+        tickets.some((t2) => t2.id !== t.id)
       ) as TicketWithTimestamp[],
     })),
   clearHistory: () => set({ history: [] }),
