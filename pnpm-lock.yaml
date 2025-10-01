@@ -97,8 +97,8 @@ importers:
         specifier: ^4.1.11
         version: 4.1.11(vite@7.0.5(@types/node@24.0.15)(jiti@2.4.2)(lightningcss@1.30.1))
       '@types/chrome':
-        specifier: ^0.1.1
-        version: 0.1.1
+        specifier: ^0.1.16
+        version: 0.1.16
       '@types/node':
         specifier: ^24.0.15
         version: 24.0.15
@@ -1177,8 +1177,8 @@ packages:
   '@types/babel__traverse@7.20.7':
     resolution: {integrity: sha512-dkO5fhS7+/oos4ciWxyEyjWe48zmG6wbCheo/G2ZnHx4fs3EU6YC6UM8rk56gAjNJ9P3MTH2jo5jb92/K6wbng==}
 
-  '@types/chrome@0.1.1':
-    resolution: {integrity: sha512-MLtFW++/n+OPQIaf5hA6pmURd3Zn+OxuvASyf2mYh8B8pHDpbhHjwlVHMw3H/aJC9Z7Z3itO0AFaZeegrGk0yA==}
+  '@types/chrome@0.1.16':
+    resolution: {integrity: sha512-GvK2s58ElQ/1hJEHcdRj798VhVgBV1Xt0u8fOBG1dILV3ATTOc2qabr3P2SG39l3ISiWWFG6Glt4IkOXz6eDCw==}
 
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
@@ -4009,7 +4009,7 @@ snapshots:
     dependencies:
       '@babel/types': 7.28.1
 
-  '@types/chrome@0.1.1':
+  '@types/chrome@0.1.16':
     dependencies:
       '@types/filesystem': 0.0.36
       '@types/har-format': 1.2.16
