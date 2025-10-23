@@ -34,13 +34,15 @@ export default function History({ search }: { search: string }) {
       }) as TicketWithTimestamp & { highlightRanges: HighlightRanges },
   });
 
+  const isSearchInputEmpty = search.length === 0 || search.trim() === '';
+
   const list = (
-    search.length > 0 ? filteredList : store.history
+    !isSearchInputEmpty ? filteredList : store.history
   ) as (TicketWithTimestamp & { highlightRanges?: HighlightRanges })[];
 
   return (
     <TicketList list={store.history} emptyMessage="Nenhum ticket no histórico">
-      {search.length > 0 && store.history.length > 0 && list.length === 0 && (
+      {!isSearchInputEmpty && store.history.length > 0 && list.length === 0 && (
         <div className="text-foreground/50 mt-8 flex h-full w-full items-center justify-center">
           <div className="text-center text-xl">Nenhum ticket encontrado</div>
         </div>
@@ -52,7 +54,7 @@ export default function History({ search }: { search: string }) {
             <Ticket
               key={ticket.id}
               ticket={ticket}
-              tooltipMessage={'Visto pela última vez em:'}
+              tooltipMessage="Visto pela última vez:"
               customTitle={
                 ticket.highlightRanges ? (
                   <Highlight

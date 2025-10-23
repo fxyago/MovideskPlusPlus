@@ -17,37 +17,53 @@ import { mppStore } from './state';
 import './style.css';
 
 waitForElement('#main-menu', (element) => {
-  const toastFooter = document.createElement('footer');
-  toastFooter.id = '__toast_root';
-  element.appendChild(toastFooter);
-  const rootContainer = document.querySelector('#__toast_root');
-  if (!rootContainer) throw new Error("Can't find toast root element");
-  const root = createRoot(rootContainer);
-  root.render(<Toaster className="text-black" />);
+  try {
+    const toastFooter = document.createElement('footer');
+    toastFooter.id = '__toast_root';
+    element.appendChild(toastFooter);
+    const rootContainer = document.querySelector('#__toast_root');
+    if (!rootContainer) throw new Error("Can't find toast root element");
+    const root = createRoot(rootContainer);
+    root.render(<Toaster className="text-black" />);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 waitForElement('.chat-group-dropdown-actions', (element) => {
-  const rootButton = document.createElement('li');
-  rootButton.classList.add('top-user-itens-icons-container');
-  element.insertAdjacentElement('afterend', rootButton);
-  createRoot(rootButton).render(MainMenu());
-  setTimeout(() => {
-    toast.success('Movidesk++ carregado!');
-  }, 100);
+  try {
+    const rootButton = document.createElement('li');
+    rootButton.classList.add('top-user-itens-icons-container');
+    element.insertAdjacentElement('afterend', rootButton);
+    createRoot(rootButton).render(MainMenu());
+    setTimeout(() => {
+      toast.success('Movidesk++ carregado!');
+    }, 100);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 waitForElement('#tabs', () => {
-  setInterval(() => {
-    const actionTabsElement = document
-      .getElementsByClassName('top-user-itens')
-      .item(0);
-    const width = actionTabsElement?.clientWidth ?? 300;
-    const widthText = `width: calc(100% - ${width}px);`;
-
-    const ticketTabsElement = document.getElementById('tabs');
-
-    if (ticketTabsElement) ticketTabsElement.style.cssText = widthText;
-  }, 2000);
+  chrome.alarms.create({
+    periodInMinutes: 1,
+    delayInMinutes: 0,
+    when: Date.now(),
+  }).then(() => {
+    try {
+      const actionTabsElement = document
+        .getElementsByClassName('top-user-itens')
+        .item(0);
+      const width = actionTabsElement?.clientWidth ?? 300;
+      const widthText = `width: calc(100% - ${width}px);`;
+  
+      const ticketTabsElement = document.getElementById('tabs');
+  
+      if (ticketTabsElement) ticketTabsElement.style.cssText = widthText;
+    } catch (error) {
+      console.error(error);
+    }
+  });
 });
 
 observeElementInsertion({
@@ -58,49 +74,68 @@ observeElementInsertion({
 
 observeElementInsertion({
   targetClasses: ['ticket-appointments-container'],
-  callback: (el) => mountSavedAppointments(el.closest('.ticket-appointments')!),
+  callback: (el) => {
+    let appointmentsElement = el.closest<HTMLElement>('.ticket-appointments');
+    if (appointmentsElement) mountSavedAppointments(appointmentsElement);
+  },
 });
 
 setTimeout(() => {
-  document
-    .querySelectorAll('.ticket-appointments')
-    .forEach((element) => mountSavedAppointments(element as HTMLElement));
+  try {
+    document
+      .querySelectorAll('.ticket-appointments')
+      .forEach((element) => mountSavedAppointments(element as HTMLElement));
+  } catch (error) {
+    console.error(error);
+  }
 }, 1000);
 
 setInterval(() => {
-  document.querySelectorAll('.tab-ticket-form').forEach((ticketElement) => {
-    const isTicketBindable =
-      ticketElement instanceof HTMLElement &&
-      !ticketElement.classList.contains('create');
+  try {
+    document.querySelectorAll('.tab-ticket-form').forEach((ticketElement) => {
+      const isTicketBindable =
+        ticketElement instanceof HTMLElement &&
+        !ticketElement.classList.contains('create');
 
-    if (isTicketBindable) bindTicketBookmark(ticketElement);
-  });
+      if (isTicketBindable) bindTicketBookmark(ticketElement);
+    });
 
-  fixCloseIcon();
+    fixCloseIcon();
+  } catch (error) {
+    console.error(error);
+  }
 }, 5000);
 
 onNavigateFromLogin(() => {
-  const state = mppStore.getState();
-  state.setLastSession(...state.sessionBuffer);
+  try {
+    const state = mppStore.getState();
+    state.setLastSession(...state.sessionBuffer);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 setInterval(() => {
-  const ticketsAbertos = getOpenedTicketsWithDetails() ?? [];
+  try {
+    const ticketsAbertos = getOpenedTicketsWithDetails() ?? [];
 
-  const state = mppStore.getState();
+    const state = mppStore.getState();
 
-  if (ticketsAbertos.length === 0) return;
+    if (ticketsAbertos.length === 0) return;
 
-  const timestamp = new Date().getTime();
+    const timestamp = new Date().getTime();
 
-  state.setSessionBuffer(
-    ...ticketsAbertos.map((ticket) => ({
-      ...ticket,
-      timestamp,
-    }))
-  );
+    state.setSessionBuffer(
+      ...ticketsAbertos.map((ticket) => ({
+        ...ticket,
+        timestamp,
+      }))
+    );
 
-  ticketsAbertos.forEach((ticket) =>
-    state.addToHistory({ ...ticket, timestamp })
-  );
+    ticketsAbertos.forEach((ticket) =>
+      state.addToHistory({ ...ticket, timestamp })
+    );
+  } catch (error) {
+    console.error(error);
+  }
 }, 10000);

@@ -62,13 +62,19 @@ export const observeElementInsertion = ({
             addedNode.nodeType === Node.ELEMENT_NODE &&
             addedNode instanceof HTMLElement
           ) {
-            const matches =
-              targetClasses.every((cls) => addedNode.classList.contains(cls)) &&
-              !exceptionClasses.some((cls) =>
-                addedNode.classList.contains(cls)
-              );
+            try {
+              const matches =
+                targetClasses.every((cls) =>
+                  addedNode.classList.contains(cls)
+                ) &&
+                !exceptionClasses.some((cls) =>
+                  addedNode.classList.contains(cls)
+                );
 
-            if (matches) callback(addedNode);
+              if (matches) callback(addedNode);
+            } catch (error) {
+              console.error(error);
+            }
           }
         }
       }

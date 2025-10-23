@@ -34,8 +34,10 @@ export default function LastSession({ search }: { search: string }) {
       }) as TicketWithTimestamp & { highlightRanges: HighlightRanges },
   });
 
+  const isSearchInputEmpty = search.length === 0 || search.trim() === '';
+
   const list = (
-    search.length > 0 ? filteredList : store.lastSession
+    !isSearchInputEmpty ? filteredList : store.lastSession
   ) as (TicketWithTimestamp & { highlightRanges?: HighlightRanges })[];
 
   return (
@@ -43,7 +45,7 @@ export default function LastSession({ search }: { search: string }) {
       list={store.lastSession}
       emptyMessage="Nenhum ticket salvo na última sessão"
     >
-      {search.length > 0 &&
+      {!isSearchInputEmpty &&
         store.lastSession.length > 0 &&
         list.length === 0 && (
           <div className="text-foreground/50 mt-8 flex h-full w-full items-center justify-center">

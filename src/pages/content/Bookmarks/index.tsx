@@ -36,17 +36,21 @@ export default function Bookmarks({ search }: { search: string }) {
       }) as TicketWithTimestamp & { highlightRanges: HighlightRanges },
   });
 
+  const isSearchInputEmpty = search.length === 0 || search.trim() === '';
+
   const list = (
-    search.length > 0 ? filteredList : store.bookmarks
+    !isSearchInputEmpty ? filteredList : store.bookmarks
   ) as (TicketWithTimestamp & { highlightRanges?: HighlightRanges })[];
 
   return (
     <TicketList list={store.bookmarks} emptyMessage="Nenhum ticket favoritado">
-      {search.length > 0 && store.bookmarks.length > 0 && list.length === 0 && (
-        <div className="text-foreground/50 mt-8 flex h-full w-full items-center justify-center">
-          <div className="text-center text-xl">Nenhum ticket encontrado</div>
-        </div>
-      )}
+      {!isSearchInputEmpty &&
+        store.bookmarks.length > 0 &&
+        list.length === 0 && (
+          <div className="text-foreground/50 mt-8 flex h-full w-full items-center justify-center">
+            <div className="text-center text-xl">Nenhum ticket encontrado</div>
+          </div>
+        )}
 
       {list.length > 0 &&
         list.map((ticket) => (
